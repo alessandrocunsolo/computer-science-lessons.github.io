@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lezione-php-base</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Lezione PHP: Istruzioni Fondamentali</h1>
+<h2>Assegnazione, Selezione e Iterazione</h2>
+<h2>Obiettivi della Lezione</h2>
+<ul>
+<li>Comprendere le istruzioni di assegnazione in PHP</li>
+<li>Utilizzare le strutture di selezione (if-else, switch)</li>
+<li>Applicare i cicli (for, while, do-while)</li>
+<li>Generare file HTML dinamici con PHP</li>
+</ul>
+<hr />
+<h2>📚 Riepilogo Teorico</h2>
+<h3>Sintassi Base PHP</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Il codice PHP va sempre tra i tag &lt;? php e ?&gt;</span>
+<span class="c1">// Ogni istruzione termina con punto e virgola ;</span>
+
+<span class="c1">// Commento su una riga</span>
+<span class="cm">/* Commento </span>
+<span class="cm">   su più righe */</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>1. Variabili e Assegnazione</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Le variabili iniziano sempre con $</span>
+<span class="nv">$nome</span> <span class="o">=</span> <span class="s2">&quot;Mario&quot;</span><span class="p">;</span>              <span class="c1">// Stringa</span>
+<span class="nv">$eta</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>                    <span class="c1">// Intero</span>
+<span class="nv">$altezza</span> <span class="o">=</span> <span class="mf">1.75</span><span class="p">;</span>              <span class="c1">// Float</span>
+<span class="nv">$maggiorenne</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>          <span class="c1">// Booleano</span>
+
+<span class="c1">// Concatenazione stringhe</span>
+<span class="nv">$messaggio</span> <span class="o">=</span> <span class="s2">&quot;Ciao &quot;</span> <span class="o">.</span> <span class="nv">$nome</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$messaggio</span><span class="p">;</span>              <span class="c1">// Stampa: Ciao Mario</span>
+
+<span class="c1">// Operatori aritmetici: + - * / %</span>
+<span class="nv">$somma</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>              <span class="c1">// 15</span>
+<span class="nv">$resto</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>              <span class="c1">// 1</span>
+
+<span class="c1">// Operatori di assegnazione composti</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nv">$x</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>   <span class="c1">// $x = $x + 5 → 15</span>
+<span class="nv">$x</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>   <span class="c1">// $x = $x - 3 → 12</span>
+<span class="nv">$x</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>   <span class="c1">// $x = $x * 2 → 24</span>
+<span class="nv">$x</span> <span class="o">/=</span> <span class="mi">4</span><span class="p">;</span>   <span class="c1">// $x = $x / 4 → 6</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>2.  Istruzioni di Selezione</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// IF - ELSE</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$eta</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Maggiorenne&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Minorenne&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// IF - ELSEIF - ELSE</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Ottimo&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Buono&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Sufficiente&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Insufficiente&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// SWITCH</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$giorno</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s2">&quot;Lunedì&quot;</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">&quot;Inizio settimana&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Venerdì&quot;</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">&quot;Fine settimana&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s2">&quot;Giorno feriale&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Operatori di confronto</span>
+<span class="c1">// ==  uguale</span>
+<span class="c1">// === uguale e stesso tipo</span>
+<span class="c1">// !=  diverso</span>
+<span class="c1">// &lt;   minore</span>
+<span class="c1">// &gt;   maggiore</span>
+<span class="c1">// &lt;=  minore o uguale</span>
+<span class="c1">// &gt;=  maggiore o uguale</span>
+
+<span class="c1">// Operatori logici</span>
+<span class="c1">// &amp;&amp;  AND logico</span>
+<span class="c1">// ||  OR logico</span>
+<span class="c1">// !   NOT logico</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>3.  Istruzioni di Iterazione</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// CICLO FOR</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$i</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Output: 1 2 3 4 5</span>
+
+<span class="c1">// CICLO WHILE</span>
+<span class="nv">$contatore</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$contatore</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$contatore</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+    <span class="nv">$contatore</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// CICLO DO-WHILE</span>
+<span class="nv">$n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$n</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+    <span class="nv">$n</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$n</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>4.  Integrazione HTML + PHP</h3>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;! DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;title&gt;Esempio PHP&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Benvenuto </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$nome</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;?</span> <span class="nx">php</span>
+    <span class="c1">// Posso inserire blocchi PHP ovunque</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Paragrafo numero </span><span class="si">$i</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>🎯 Esercizi Pratici</h2>
+<h3><strong>Esercizio 1: Prime Variabili e Output</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> Assegnazione, echo, concatenazione</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;! DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Profilo Utente<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Benvenuto Mario Rossi! <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hai 20 anni. <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La tua email è: mario.rossi@email.it<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong> <br />
+Crea un file <code>esercizio1.php</code> che:<br />
+1. Definisce variabili: <code>$nome = "Mario"</code>, <code>$cognome = "Rossi"</code>, <code>$eta = 20</code>, <code>$email = "mario.rossi@email.it"</code><br />
+2. Genera il file HTML usando <code>echo</code> per inserire i valori delle variabili<br />
+3. Usa concatenazione per combinare nome e cognome</p>
+<hr />
+<h3><strong>Esercizio 2: Calcoli Matematici</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> Operatori aritmetici, assegnazione</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Calcolo Geometrico<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Calcolo Area Rettangolo<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Base: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>10 cm<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Altezza: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>5 cm<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Area: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>50 cm²<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Perimetro: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>30 cm<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Definisci variabili <code>$base = 10</code> e <code>$altezza = 5</code><br />
+2. Calcola <code>$area = $base * $altezza</code><br />
+3.  Calcola <code>$perimetro = 2 * ($base + $altezza)</code><br />
+4. Genera l'HTML mostrando tutti i valori</p>
+<hr />
+<h3><strong>Esercizio 3: Operazioni Matematiche Multiple</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> Assegnazione, operatori aritmetici</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Calcolatrice Base<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Operazioni con 15 e 4<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Somma: 15 + 4 = 19<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Sottrazione: 15 - 4 = 11<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Moltiplicazione: 15 × 4 = 60<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Divisione: 15 ÷ 4 = 3. 75<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Resto: 15 % 4 = 3<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Definisci <code>$a = 15</code> e <code>$b = 4</code><br />
+2. Calcola tutte le operazioni (somma, sottrazione, moltiplicazione, divisione, resto)<br />
+3. Genera l'HTML con una lista che mostra tutti i risultati<br />
+4. Usa <code>round($divisione, 2)</code> per arrotondare la divisione a 2 decimali</p>
+<hr />
+<h3><strong>Esercizio 4: Controllo Maggiore Età</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> if-else, selezione</p>
+<p><strong>Risultato HTML da ottenere (se età &lt; 18):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Controllo Accesso<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">negato</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Controllo Accesso<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Nome: Luca<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Età: 17 anni<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;negato&quot;</span><span class="p">&gt;</span>⛔ Accesso negato - Devi avere almeno 18 anni<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Risultato HTML da ottenere (se età &gt;= 18):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Controllo Accesso<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">consentito</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">green</span><span class="p">;</span><span class="w"> </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Controllo Accesso<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Nome: Marco<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Età: 21 anni<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;consentito&quot;</span><span class="p">&gt;</span>✅ Accesso consentito<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Definisci <code>$nome</code> e <code>$eta</code><br />
+2. Usa <code>if-else</code> per controllare se <code>$eta &gt;= 18</code><br />
+3. Genera HTML diverso in base alla condizione<br />
+4. Applica classi CSS diverse per consentito/negato</p>
+<hr />
+<h3><strong>Esercizio 5: Valutazione Scolastica</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> if-elseif-else multipli</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Pagella<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ccc</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">distinto</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">blue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Pagella Studente<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Studente:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Anna Bianchi<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Voto:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 8<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;distinto&quot;</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Giudizio:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Distinto<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Ottimo lavoro, continua così!<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Tabella valutazione:</strong><br />
+- Voto &gt;= 9: "Ottimo" (verde) - "Eccellente!"<br />
+- Voto &gt;= 7: "Distinto" (blu) - "Ottimo lavoro, continua così!"<br />
+- Voto &gt;= 6: "Buono" (arancione) - "Discreto, puoi migliorare"<br />
+- Voto &lt; 6: "Insufficiente" (rosso) - "È necessario studiare di più"</p>
+<p><strong>Consegna:</strong><br />
+1.  Definisci <code>$studente = "Anna Bianchi"</code> e <code>$voto = 8</code><br />
+2. Usa <code>if-elseif-else</code> per determinare giudizio, commento e classe CSS<br />
+3. Genera l'HTML completo con la card stilizzata</p>
+<hr />
+<h3><strong>Esercizio 6: Giorni della Settimana</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> switch-case</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Orario Scolastico<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Oggi è Martedì<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>📚 <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Materie del giorno:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Matematica, Fisica<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>🕐 <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Orario:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 8:00 - 13:00<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>📝 <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Compiti:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Esercizi pagina 45<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Definisci <code>$giorno = "Martedì"</code><br />
+2. Usa <code>switch-case</code> per assegnare:<br />
+   - Lunedì: "Italiano, Storia" - "Tema da consegnare"<br />
+   - Martedì: "Matematica, Fisica" - "Esercizi pagina 45"<br />
+   - Mercoledì: "Inglese, Scienze" - "Studiare capitolo 3"<br />
+   - Giovedì: "Informatica, Arte" - "Completare progetto"<br />
+   - Venerdì: "Educazione Fisica, Musica" - "Nessun compito"<br />
+   - Sabato/Domenica: "Weekend - Nessuna lezione 🎉"<br />
+3. Genera l'HTML con tutte le informazioni</p>
+<hr />
+<h3><strong>Esercizio 7: Tabellina con Ciclo For</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> Ciclo for, iterazione</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Tabellina<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Tabellina del 7<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 1 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>7<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 2 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>14<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 3 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>21<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 4 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>28<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 5 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>35<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 6 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>42<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 7 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>49<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 8 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>56<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 9 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>63<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>7 x 10 = <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>70<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Definisci <code>$numero = 7</code><br />
+2. Usa ciclo <code>for ($i = 1; $i &lt;= 10; $i++)</code><br />
+3. Calcola <code>$risultato = $numero * $i</code> in ogni iterazione<br />
+4. Genera l'HTML con lista ordinata</p>
+<hr />
+<h3><strong>Esercizio 8: Numeri Pari con While</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> Ciclo while, condizioni</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;! DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Numeri Pari<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">numero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Numeri Pari da 1 a 20<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>6<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>12<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>14<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>16<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>18<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero&quot;</span><span class="p">&gt;</span>20<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Totale numeri pari: 10<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Usa variabili <code>$numero = 1</code>, <code>$contatore = 0</code><br />
+2.  Usa <code>while ($numero &lt;= 20)</code><br />
+3.  Controlla se <code>$numero % 2 == 0</code> (numero pari)<br />
+4. Se pari, genera <code>&lt;span class="numero"&gt;</code> e incrementa contatore<br />
+5. Incrementa sempre <code>$numero</code><br />
+6. Mostra il totale alla fine</p>
+<hr />
+<h3><strong>Esercizio 9: Tabella Moltiplicazione</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> Cicli annidati (for dentro for)</p>
+<p><strong>Risultato HTML da ottenere:</strong><br />
+Una tabella 5x5 di moltiplicazioni:</p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Tabella Moltiplicazioni<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">collapse</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#333</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">th</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">tr</span><span class="p">:</span><span class="nd">nth-child</span><span class="o">(</span><span class="nt">even</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f2f2f2</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Tabella delle Moltiplicazioni (1-5)<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>×<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>6<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="cm">&lt;!-- ... continua fino a 5 --&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Genera prima la riga di intestazione con i numeri 1-5<br />
+2. Usa due cicli <code>for</code> annidati:<br />
+   - Ciclo esterno: <code>for ($riga = 1; $riga &lt;= 5; $riga++)</code><br />
+   - Ciclo interno: <code>for ($col = 1; $col &lt;= 5; $col++)</code><br />
+3. Ogni cella contiene <code>$riga * $col</code><br />
+4. Prima colonna di ogni riga è intestazione (<code>&lt;th&gt;</code>)</p>
+<hr />
+<h3><strong>Esercizio 10: Conto alla Rovescia</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐⭐ Esperto<br />
+<strong>Argomenti:</strong> Cicli, condizioni multiple, styling dinamico</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Countdown<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">.</span><span class="w"> </span><span class="nt">numero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">verde</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">giallo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FFC107</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">rosso</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f44336</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">zero</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#000</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FFD700</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">pulse</span><span class="w"> </span><span class="mi">1</span><span class="kt">s</span><span class="w"> </span><span class="kc">infinite</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">@</span><span class="k">keyframes</span><span class="w"> </span><span class="nt">pulse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">0</span><span class="o">%,</span><span class="w"> </span><span class="nt">100</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">50</span><span class="o">%</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">transform</span><span class="p">:</span><span class="w"> </span><span class="nb">scale</span><span class="p">(</span><span class="mf">1.1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Conto alla Rovescia<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero verde&quot;</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero verde&quot;</span><span class="p">&gt;</span>9<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero verde&quot;</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero verde&quot;</span><span class="p">&gt;</span>7<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero giallo&quot;</span><span class="p">&gt;</span>6<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero giallo&quot;</span><span class="p">&gt;</span>5<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero giallo&quot;</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero rosso&quot;</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero rosso&quot;</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero rosso&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;numero zero&quot;</span><span class="p">&gt;</span>🚀 LANCIO!  🚀<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Usa ciclo <code>for</code> da 10 a 0 (attenzione: decremento con <code>$i--</code>)<br />
+2. Usa <code>if-elseif-else</code> per determinare la classe CSS:<br />
+   - Da 10 a 7: classe "verde"<br />
+   - Da 6 a 4: classe "giallo"<br />
+   - Da 3 a 1: classe "rosso"<br />
+   - 0: classe "zero" con messaggio "🚀 LANCIO! 🚀"<br />
+3. Genera i <code>&lt;div&gt;</code> con la classe appropriata</p>
+<hr />
+<h2>✅ Soluzioni</h2>
+<h3>Soluzione Esercizio 1</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Definizione variabili</span>
+<span class="nv">$nome</span> <span class="o">=</span> <span class="s2">&quot;Mario&quot;</span><span class="p">;</span>
+<span class="nv">$cognome</span> <span class="o">=</span> <span class="s2">&quot;Rossi&quot;</span><span class="p">;</span>
+<span class="nv">$eta</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="s2">&quot;mario. rossi@email.it&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Profilo Utente&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Benvenuto </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$nome</span> <span class="o">.</span>  <span class="s2">&quot; &quot;</span> <span class="o">.</span> <span class="nv">$cognome</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">!&lt;/h1&gt;</span>
+<span class="x">    &lt;p&gt;Hai </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$eta</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> anni. &lt;/p&gt;</span>
+<span class="x">    &lt;p&gt;La tua email è: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$email</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 2</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Variabili</span>
+<span class="nv">$base</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nv">$altezza</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="c1">// Calcoli</span>
+<span class="nv">$area</span> <span class="o">=</span> <span class="nv">$base</span> <span class="o">*</span> <span class="nv">$altezza</span><span class="p">;</span>
+<span class="nv">$perimetro</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nv">$base</span> <span class="o">+</span> <span class="nv">$altezza</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Calcolo Geometrico&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Calcolo Area Rettangolo&lt;/h2&gt;</span>
+<span class="x">    &lt;p&gt;Base: &lt;strong&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$base</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;</span> <span class="nx">cm</span><span class="o">&lt;/</span><span class="nx">strong</span><span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Altezza</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$altezza</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> cm&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="x">    &lt;p&gt;Area: &lt;strong&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$area</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;</span> <span class="nx">cm²</span><span class="o">&lt;/</span><span class="nx">strong</span><span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Perimetro</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">strong</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$perimetro</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> cm&lt;/strong&gt;&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 3</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Variabili</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="c1">// Calcoli</span>
+<span class="nv">$somma</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="nv">$sottrazione</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">-</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="nv">$moltiplicazione</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">*</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="nv">$divisione</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">/</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="nv">$resto</span> <span class="o">=</span> <span class="nv">$a</span> <span class="o">%</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Calcolatrice Base&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Operazioni con </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> e </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">    &lt;ul&gt;</span>
+<span class="x">        &lt;li&gt;Somma: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> + </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> = </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$somma</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;Sottrazione: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;</span> <span class="o">-</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> = </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$sottrazione</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;Moltiplicazione: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;</span> <span class="nx">×</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> = </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$moltiplicazione</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;Divisione: </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> ÷ </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> = </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$divisione</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/li&gt;</span>
+<span class="x">        &lt;li&gt;Resto: </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> % </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> = </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$resto</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 4</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Variabili</span>
+<span class="nv">$nome</span> <span class="o">=</span> <span class="s2">&quot;Luca&quot;</span><span class="p">;</span>
+<span class="nv">$eta</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+
+<span class="c1">// Determina classe e messaggio</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$eta</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;consentito&quot;</span><span class="p">;</span>
+    <span class="nv">$messaggio</span> <span class="o">=</span> <span class="s2">&quot;✅ Accesso consentito&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;negato&quot;</span><span class="p">;</span>
+    <span class="nv">$messaggio</span> <span class="o">=</span> <span class="s2">&quot;⛔ Accesso negato - Devi avere almeno 18 anni&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Controllo Accesso&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .consentito { color: green; font-weight: bold; }</span>
+<span class="x">        .negato { color: red; font-weight: bold; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Controllo Accesso&lt;/h2&gt;</span>
+<span class="x">    &lt;p&gt;Nome: </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$nome</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Età</span><span class="o">:</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$eta</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;</span> <span class="nx">anni</span><span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo </span><span class="si">$classe</span><span class="s2">; ? &gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$messaggio</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 5</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Variabili</span>
+<span class="nv">$studente</span> <span class="o">=</span> <span class="s2">&quot;Anna Bianchi&quot;</span><span class="p">;</span>
+<span class="nv">$voto</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+<span class="c1">// Determinazione giudizio</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$giudizio</span> <span class="o">=</span> <span class="s2">&quot;Ottimo&quot;</span><span class="p">;</span>
+    <span class="nv">$commento</span> <span class="o">=</span> <span class="s2">&quot;Eccellente! &quot;</span><span class="p">;</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;ottimo&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$giudizio</span> <span class="o">=</span> <span class="s2">&quot;Distinto&quot;</span><span class="p">;</span>
+    <span class="nv">$commento</span> <span class="o">=</span> <span class="s2">&quot;Ottimo lavoro, continua così!&quot;</span><span class="p">;</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;distinto&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$voto</span> <span class="o">&gt;=</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$giudizio</span> <span class="o">=</span> <span class="s2">&quot;Buono&quot;</span><span class="p">;</span>
+    <span class="nv">$commento</span> <span class="o">=</span> <span class="s2">&quot;Discreto, puoi migliorare&quot;</span><span class="p">;</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;buono&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$giudizio</span> <span class="o">=</span> <span class="s2">&quot;Insufficiente&quot;</span><span class="p">;</span>
+    <span class="nv">$commento</span> <span class="o">=</span> <span class="s2">&quot;È necessario studiare di più&quot;</span><span class="p">;</span>
+    <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;insufficiente&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Pagella&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .card {</span>
+<span class="x">            border: 2px solid #ccc;</span>
+<span class="x">            padding: 20px;</span>
+<span class="x">            max-width: 400px;</span>
+<span class="x">            border-radius: 10px;</span>
+<span class="x">        }</span>
+<span class="x">        .ottimo { color: green; }</span>
+<span class="x">        .distinto { color: blue; }</span>
+<span class="x">        .buono { color: orange; }</span>
+<span class="x">        .insufficiente { color: red; }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;div class=&quot;card&quot;&gt;</span>
+<span class="x">        &lt;h2&gt;Pagella Studente&lt;/h2&gt;</span>
+<span class="x">        &lt;p&gt;&lt;strong&gt;Studente:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$studente</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">Voto</span><span class="o">:&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$voto</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo </span><span class="si">$classe</span><span class="s2">; ?&gt;&quot;</span><span class="o">&gt;&lt;</span><span class="nx">strong</span><span class="o">&gt;</span><span class="nx">Giudizio</span><span class="o">:&lt;/</span><span class="nx">strong</span><span class="o">&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nv">$giudizio</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">        &lt;p&gt;&lt;em&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$commento</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">em</span><span class="o">&gt;&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 6</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Variabile</span>
+<span class="nv">$giorno</span> <span class="o">=</span> <span class="s2">&quot;Martedì&quot;</span><span class="p">;</span>
+
+<span class="c1">// Switch per determinare materie e compiti</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$giorno</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s2">&quot;Lunedì&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Italiano, Storia&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Tema da consegnare&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Martedì&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Matematica, Fisica&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Esercizi pagina 45&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Mercoledì&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Inglese, Scienze&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Studiare capitolo 3&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Giovedì&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Informatica, Arte&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Completare progetto&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Venerdì&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Educazione Fisica, Musica&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Nessun compito&quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;Sabato&quot;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s2">&quot;Domenica&quot;</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Weekend - Nessuna lezione 🎉&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;Relax! &quot;</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nv">$materie</span> <span class="o">=</span> <span class="s2">&quot;Giorno non valido&quot;</span><span class="p">;</span>
+        <span class="nv">$compiti</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Orario Scolastico&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Oggi è </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$giorno</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
+<span class="x">    &lt;p&gt;📚 &lt;strong&gt;Materie del giorno:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$materie</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$giorno</span> <span class="o">!=</span> <span class="s2">&quot;Sabato&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$giorno</span> <span class="o">!=</span> <span class="s2">&quot;Domenica&quot;</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span>
+<span class="x">        &lt;p&gt;🕐 &lt;strong&gt;Orario:&lt;/strong&gt; 8:00 - 13:00&lt;/p&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;p&gt;📝 &lt;strong&gt;Compiti:&lt;/strong&gt; </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$compiti</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 7</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?</span> <span class="nx">php</span>
+<span class="nv">$numero</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Tabellina&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Tabellina del </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$numero</span><span class="p">;</span> <span class="o">?</span> <span class="o">&gt;&lt;/</span><span class="nx">h2</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">ol</span><span class="o">&gt;</span>
+        <span class="o">&lt;?</span> <span class="nx">php</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$risultato</span> <span class="o">=</span> <span class="nv">$numero</span> <span class="o">*</span> <span class="nv">$i</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;</span><span class="si">$numero</span><span class="s2"> x </span><span class="si">$i</span><span class="s2"> = &lt;strong&gt;</span><span class="si">$risultato</span><span class="s2">&lt;/strong&gt;&lt;/li&gt;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/ol&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 8</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numero</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$contatore</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$html_numeri</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span> <span class="c1">// Variabile per accumulare gli span</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$numero</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$html_numeri</span> <span class="o">.=</span> <span class="s1">&#39;&lt;span class=&quot;numero&quot;&gt;&#39;</span> <span class="o">.</span> <span class="nv">$numero</span> <span class="o">.</span> <span class="s1">&#39;&lt;/span&gt;&#39;</span><span class="p">;</span>
+        <span class="nv">$contatore</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$numero</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Numeri Pari&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        .numero {</span>
+<span class="x">            display: inline-block;</span>
+<span class="x">            padding: 10px 15px;</span>
+<span class="x">            margin: 5px;</span>
+<span class="x">            background-color: #4CAF50;</span>
+<span class="x">            color: white;</span>
+<span class="x">            border-radius: 5px;</span>
+<span class="x">        }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Numeri Pari da 1 a 20&lt;/h2&gt;</span>
+<span class="x">    &lt;div&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$html_numeri</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;p&gt;Totale numeri pari: </span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="k">echo</span> <span class="nv">$contatore</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 9</h3>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;! DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Tabella Moltiplicazioni&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        table {</span>
+<span class="x">            border-collapse: collapse;</span>
+<span class="x">            margin: 20px auto;</span>
+<span class="x">        }</span>
+<span class="x">        th, td {</span>
+<span class="x">            border: 2px solid #333;</span>
+<span class="x">            padding: 10px 15px;</span>
+<span class="x">            text-align: center;</span>
+<span class="x">        }</span>
+<span class="x">        th {</span>
+<span class="x">            background-color: #4CAF50;</span>
+<span class="x">            color: white;</span>
+<span class="x">        }</span>
+<span class="x">        tr:nth-child(even) {</span>
+<span class="x">            background-color: #f2f2f2;</span>
+<span class="x">        }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h2&gt;Tabella delle Moltiplicazioni (1-5)&lt;/h2&gt;</span>
+<span class="x">    &lt;table&gt;</span>
+<span class="x">        &lt;!-- Riga intestazione --&gt;</span>
+<span class="x">        &lt;tr&gt;</span>
+<span class="x">            &lt;th&gt;×&lt;/th&gt;</span>
+<span class="x">            </span><span class="cp">&lt;?</span> <span class="nx">php</span>
+            <span class="k">for</span> <span class="p">(</span><span class="nv">$col</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$col</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">echo</span> <span class="s2">&quot;&lt;th&gt;</span><span class="si">$col</span><span class="s2">&lt;/th&gt;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="cp">?&gt;</span>
+<span class="x">        &lt;/tr&gt;</span>
+
+<span class="x">        &lt;!-- Righe dati --&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$riga</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$riga</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$riga</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;tr&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;th&gt;</span><span class="si">$riga</span><span class="s2">&lt;/th&gt;&quot;</span><span class="p">;</span> <span class="c1">// Prima colonna (intestazione riga)</span>
+
+            <span class="k">for</span> <span class="p">(</span><span class="nv">$col</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$col</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span> <span class="nv">$col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$risultato</span> <span class="o">=</span> <span class="nv">$riga</span> <span class="o">*</span> <span class="nv">$col</span><span class="p">;</span>
+                <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;</span><span class="si">$risultato</span><span class="s2">&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">echo</span> <span class="s2">&quot;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/table&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 10</h3>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html lang=&quot;it&quot;&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="x">    &lt;title&gt;Countdown&lt;/title&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">        body {</span>
+<span class="x">            font-family: Arial, sans-serif;</span>
+<span class="x">            text-align: center;</span>
+<span class="x">            padding: 50px;</span>
+<span class="x">            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</span>
+<span class="x">        }</span>
+<span class="x">        h1 {</span>
+<span class="x">            color: white;</span>
+<span class="x">            font-size: 3em;</span>
+<span class="x">            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);</span>
+<span class="x">        }</span>
+<span class="x">        .numero {</span>
+<span class="x">            font-size: 3em;</span>
+<span class="x">            padding: 20px;</span>
+<span class="x">            margin: 10px;</span>
+<span class="x">            border-radius: 10px;</span>
+<span class="x">            display: inline-block;</span>
+<span class="x">            box-shadow: 0 4px 6px rgba(0,0,0,0.3);</span>
+<span class="x">        }</span>
+<span class="x">        .verde { background-color: #4CAF50; color: white; }</span>
+<span class="x">        .giallo { background-color: #FFC107; color: black; }</span>
+<span class="x">        .rosso { background-color: #f44336; color: white; }</span>
+<span class="x">        .zero {</span>
+<span class="x">            font-size: 4em;</span>
+<span class="x">            background-color: #000;</span>
+<span class="x">            color: #FFD700;</span>
+<span class="x">            padding: 30px;</span>
+<span class="x">            animation: pulse 1s infinite;</span>
+<span class="x">        }</span>
+<span class="x">        @keyframes pulse {</span>
+<span class="x">            0%, 100% { transform: scale(1); }</span>
+<span class="x">            50% { transform: scale(1.1); }</span>
+<span class="x">        }</span>
+<span class="x">    &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+<span class="x">    &lt;h1&gt;Conto alla Rovescia&lt;/h1&gt;</span>
+<span class="x">    &lt;div&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?</span> <span class="nx">php</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Determina la classe CSS</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;verde&quot;</span><span class="p">;</span>
+                <span class="nv">$testo</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;giallo&quot;</span><span class="p">;</span>
+                <span class="nv">$testo</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;rosso&quot;</span><span class="p">;</span>
+                <span class="nv">$testo</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nv">$classe</span> <span class="o">=</span> <span class="s2">&quot;zero&quot;</span><span class="p">;</span>
+                <span class="nv">$testo</span> <span class="o">=</span> <span class="s2">&quot;🚀 LANCIO!  🚀&quot;</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">echo</span> <span class="s1">&#39;&lt;div class=&quot;numero &#39;</span> <span class="o">.</span> <span class="nv">$classe</span> <span class="o">.</span> <span class="s1">&#39;&quot;&gt;&#39;</span> <span class="o">.</span> <span class="nv">$testo</span> <span class="o">.</span>  <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>💡 Suggerimenti Didattici</h2>
+<h3>Preparazione Ambiente</h3>
+<p><strong>Software necessario:</strong><br />
+1. <strong>Server locale</strong> (uno a scelta):<br />
+   - XAMPP (consigliato per Windows/Mac/Linux)<br />
+   - MAMP (Mac)<br />
+   - WAMP (Windows)</p>
+<ol start="2">
+<li>
+<p><strong>Installazione XAMPP:</strong><br />
+   - Scarica da: https://www.apachefriends.org/<br />
+   - Installa seguendo la procedura guidata<br />
+   - Avvia Apache dal pannello di controllo XAMPP</p>
+</li>
+<li>
+<p><strong>Cartella di lavoro:</strong><br />
+   - Windows: <code>C:\xampp\htdocs\</code><br />
+   - Mac: <code>/Applications/XAMPP/htdocs/</code><br />
+   - Linux: <code>/opt/lampp/htdocs/</code></p>
+</li>
+<li>
+<p><strong>Accesso ai file:</strong><br />
+   - Crea una cartella es. <code>htdocs/esercizi-php/</code><br />
+   - Accedi via browser: <code>http://localhost/esercizi-php/esercizio1.php</code></p>
+</li>
+</ol>
+<h3>Progressione Didattica</h3>
+<p><strong>Lezione 1 (60 minuti) - Esercizi 1-3:</strong><br />
+- Introduzione PHP e ambiente<br />
+- Sintassi base: variabili, echo, concatenazione<br />
+- Operatori aritmetici<br />
+- Prima generazione HTML</p>
+<p><strong>Lezione 2 (60 minuti) - Esercizi 4-6:</strong><br />
+- Strutture condizionali: if-else<br />
+- Condizioni multiple: if-elseif-else<br />
+- Switch-case<br />
+- Styling condizionale</p>
+<p><strong>Lezione 3 (75 minuti) - Esercizi 7-9:</strong><br />
+- Ciclo for e applicazioni<br />
+- Ciclo while<br />
+- Cicli annidati<br />
+- Generazione tabelle dinamiche</p>
+<p><strong>Lezione 4 (45 minuti) - Esercizio 10:</strong><br />
+- Progetto completo integrativo<br />
+- Combinazione di tutte le strutture<br />
+- Styling avanzato<br />
+- Presentazione lavori</p>
+<h3>Modalità di Valutazione</h3>
+<p><strong>Criteri:</strong><br />
+- ✅ Codice funzionante (40%)<br />
+- ✅ Sintassi corretta (20%)<br />
+- ✅ HTML valido e ben formato (20%)<br />
+- ✅ Styling e presentazione (10%)<br />
+- ✅ Logica efficiente (10%)</p>
+<p><strong>Scala valutazione:</strong><br />
+- Esercizi 1-3: Sufficiente (6/10)<br />
+- Esercizi 1-5: Discreto (7/10)<br />
+- Esercizi 1-7: Buono (8/10)<br />
+- Esercizi 1-9: Distinto (9/10)<br />
+- Tutti completati: Ottimo (10/10)</p>
+<h3>Errori Comuni e Debug</h3>
+<ol>
+<li><strong>Pagina bianca = Errore PHP</strong><br />
+   ```php<br />
+   <?php
+   // Aggiungi all'inizio per vedere errori
+   error_reporting(E_ALL);
+   ini_set('display_errors', 1);
+   ?></li>
+</ol>
+<p>```</p>
+<ol start="2">
+<li>
+<p><strong>"Parse error: syntax error"</strong><br />
+   - Controlla <code>;</code> alla fine di ogni istruzione<br />
+   - Controlla chiusura <code>}</code> di if/for/while</p>
+</li>
+<li>
+<p><strong>Variabile non definita</strong><br />
+   - Ricorda il simbolo <code>$</code> davanti<br />
+   - PHP è case-sensitive: <code>$Nome</code> ≠ <code>$nome</code></p>
+</li>
+<li>
+<p><strong>Output non appare</strong><br />
+   - Verifica di aver usato <code>echo</code> o <code>print</code><br />
+   - Controlla di aver aperto il file con <code>. php</code> (non <code>.html</code>)</p>
+</li>
+</ol>
+<hr />
+<h2>📝 Checklist Studente</h2>
+<p>Prima di consegnare:</p>
+<ul>
+<li>[ ] Il file ha estensione <code>.php</code></li>
+<li>[ ] Ho testato nel browser (<code>http://localhost/...</code>)</li>
+<li>[ ] Tutte le istruzioni PHP terminano con <code>;</code></li>
+<li>[ ] Le variabili hanno il simbolo <code>$</code></li>
+<li>[ ] Il codice è indentato (2 o 4 spazi)</li>
+<li>[ ] L'HTML è valido (tag aperti e chiusi)</li>
+<li>[ ] Il risultato corrisponde all'esempio</li>
+<li>[ ] Ho aggiunto commenti al codice PHP</li>
+</ul>
+<hr />
+<p><strong>Buon lavoro! 💻🚀</strong></p>
+</body>
+</html>

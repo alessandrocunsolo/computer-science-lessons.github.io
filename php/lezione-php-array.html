@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lezione-php-array</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Lezione PHP: Array e Strutture Dati</h1>
+<h2>Obiettivi della Lezione</h2>
+<ul>
+<li>Comprendere e utilizzare array indicizzati</li>
+<li>Lavorare con array associativi</li>
+<li>Manipolare array multidimensionali</li>
+<li>Usare cicli foreach per scorrere array</li>
+<li>Generare HTML dinamico da array</li>
+</ul>
+<hr />
+<h2>📚 Riepilogo Teorico</h2>
+<h3>1. Array Indicizzati</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?</span> <span class="nx">php</span>
+<span class="c1">// Creazione array</span>
+<span class="nv">$frutti</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Mela&quot;</span><span class="p">,</span> <span class="s2">&quot;Pera&quot;</span><span class="p">,</span> <span class="s2">&quot;Banana&quot;</span><span class="p">);</span>
+
+<span class="c1">// Sintassi alternativa (PHP 5.4+)</span>
+<span class="nv">$colori</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rosso&quot;</span><span class="p">,</span> <span class="s2">&quot;Verde&quot;</span><span class="p">,</span> <span class="s2">&quot;Blu&quot;</span><span class="p">];</span>
+
+<span class="c1">// Accesso elementi (indice parte da 0)</span>
+<span class="k">echo</span> <span class="nv">$frutti</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  <span class="c1">// Mela</span>
+<span class="k">echo</span> <span class="nv">$frutti</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>  <span class="c1">// Pera</span>
+<span class="k">echo</span> <span class="nv">$frutti</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  <span class="c1">// Banana</span>
+
+<span class="c1">// Aggiungere elementi</span>
+<span class="nv">$frutti</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Arancia&quot;</span><span class="p">;</span>  <span class="c1">// Aggiunge in fondo</span>
+<span class="nv">$frutti</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Uva&quot;</span><span class="p">;</span>     <span class="c1">// Specifica indice</span>
+
+<span class="c1">// Modificare elementi</span>
+<span class="nv">$frutti</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Fragola&quot;</span><span class="p">;</span>
+
+<span class="c1">// Contare elementi</span>
+<span class="nv">$lunghezza</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$frutti</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>2. Array Associativi</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Array con chiavi personalizzate</span>
+<span class="nv">$persona</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;nome&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cognome&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eta&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="s2">&quot;citta&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Roma&quot;</span>
+<span class="p">);</span>
+
+<span class="c1">// Sintassi alternativa</span>
+<span class="nv">$auto</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;marca&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Fiat&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modello&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;500&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;anno&quot;</span> <span class="o">=&gt;</span> <span class="mi">2020</span>
+<span class="p">];</span>
+
+<span class="c1">// Accesso con chiave</span>
+<span class="k">echo</span> <span class="nv">$persona</span><span class="p">[</span><span class="s2">&quot;nome&quot;</span><span class="p">];</span>     <span class="c1">// Mario</span>
+<span class="k">echo</span> <span class="nv">$auto</span><span class="p">[</span><span class="s2">&quot;marca&quot;</span><span class="p">];</span>       <span class="c1">// Fiat</span>
+
+<span class="c1">// Aggiungere/modificare</span>
+<span class="nv">$persona</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;mario@example.com&quot;</span><span class="p">;</span>
+<span class="nv">$persona</span><span class="p">[</span><span class="s2">&quot;eta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">26</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>3.  Array Multidimensionali</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Array di array</span>
+<span class="nv">$studenti</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span> <span class="s2">&quot;Rossi&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Verdi&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Luca&quot;</span><span class="p">,</span> <span class="s2">&quot;Bianchi&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// Accesso</span>
+<span class="k">echo</span> <span class="nv">$studenti</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>  <span class="c1">// Mario</span>
+<span class="k">echo</span> <span class="nv">$studenti</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">];</span>  <span class="c1">// Verdi</span>
+
+<span class="c1">// Array associativi multidimensionali</span>
+<span class="nv">$prodotti</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;nome&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Laptop&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;prezzo&quot;</span> <span class="o">=&gt;</span> <span class="mf">899.00</span><span class="p">,</span>
+        <span class="s2">&quot;disponibile&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;nome&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Mouse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;prezzo&quot;</span> <span class="o">=&gt;</span> <span class="mf">25.00</span><span class="p">,</span>
+        <span class="s2">&quot;disponibile&quot;</span> <span class="o">=&gt;</span> <span class="k">false</span>
+    <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$prodotti</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;nome&quot;</span><span class="p">];</span>    <span class="c1">// Laptop</span>
+<span class="k">echo</span> <span class="nv">$prodotti</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;prezzo&quot;</span><span class="p">];</span>  <span class="c1">// 25.00</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>4. Ciclo Foreach</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Foreach per array indicizzati</span>
+<span class="nv">$frutti</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mela&quot;</span><span class="p">,</span> <span class="s2">&quot;Pera&quot;</span><span class="p">,</span> <span class="s2">&quot;Banana&quot;</span><span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$frutti</span> <span class="k">as</span> <span class="nv">$frutto</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$frutto</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Output: Mela Pera Banana</span>
+
+<span class="c1">// Foreach per array associativi</span>
+<span class="nv">$persona</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nome&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Mario&quot;</span><span class="p">,</span> <span class="s2">&quot;eta&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">];</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$persona</span> <span class="k">as</span> <span class="nv">$chiave</span> <span class="o">=&gt;</span> <span class="nv">$valore</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$chiave</span><span class="s2">: </span><span class="si">$valore</span><span class="s2">&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Output:</span>
+<span class="c1">// nome: Mario</span>
+<span class="c1">// eta: 25</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>5. Funzioni Utili per Array</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numeri</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">];</span>
+
+<span class="c1">// Contare elementi</span>
+<span class="nb">count</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>           <span class="c1">// 6</span>
+
+<span class="c1">// Verificare se esiste</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nv">$numeri</span><span class="p">);</span>     <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nv">$numeri</span><span class="p">);</span>    <span class="c1">// false</span>
+
+<span class="c1">// Ordinamento</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>            <span class="c1">// Ordina crescente</span>
+<span class="nb">rsort</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>           <span class="c1">// Ordina decrescente</span>
+<span class="nb">asort</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>              <span class="c1">// Ordina associativo per valore</span>
+<span class="nb">ksort</span><span class="p">(</span><span class="nv">$arr</span><span class="p">);</span>              <span class="c1">// Ordina associativo per chiave</span>
+
+<span class="c1">// Somma e media</span>
+<span class="nv">$somma</span> <span class="o">=</span> <span class="nb">array_sum</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>
+<span class="nv">$media</span> <span class="o">=</span> <span class="nv">$somma</span> <span class="o">/</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>
+
+<span class="c1">// Massimo e minimo</span>
+<span class="nv">$max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>
+<span class="nv">$min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">);</span>
+
+<span class="c1">// Unire array</span>
+<span class="nv">$array1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nv">$array2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+<span class="nv">$unito</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$array1</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">);</span>
+
+<span class="c1">// Estrarre slice</span>
+<span class="nv">$porzione</span> <span class="o">=</span> <span class="nb">array_slice</span><span class="p">(</span><span class="nv">$numeri</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// Dal 2° elemento, 3 elementi</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>🎯 Esercizi Pratici</h2>
+<h3><strong>Esercizio 1: Lista della Spesa</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> Array indicizzati, foreach, liste HTML</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;! DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Lista della Spesa<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">ul</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">list-style-type</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f0f0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">li</span><span class="p">::</span><span class="nd">before</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;🛒 &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Lista della Spesa<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Totale articoli: 6<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Pane<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Latte<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Uova<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Pomodori<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Pasta<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Formaggio<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Crea array <code>$spesa</code> con 6 articoli<br />
+2. Usa <code>count()</code> per contare gli articoli<br />
+3. Usa <code>foreach</code> per generare gli elementi <code>&lt;li&gt;</code><br />
+4. Applica lo stile CSS fornito</p>
+<hr />
+<h3><strong>Esercizio 2: Classifica Studenti</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> Array indicizzati, ordinamento, iterazione</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Classifica Voti<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">.</span><span class="w"> </span><span class="nt">studente</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">primo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FFD700</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">secondo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#C0C0C0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">terzo</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#CD7F32</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">altro</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f0f0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Classifica Classe 3A<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Voto più alto: 9.5<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Voto più basso: 6.0<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Media classe: 7.8<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Classifica Studenti:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;studente primo&quot;</span><span class="p">&gt;</span>🥇 1° posto: 9.5<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;studente secondo&quot;</span><span class="p">&gt;</span>🥈 2° posto: 8.5<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;studente terzo&quot;</span><span class="p">&gt;</span>🥉 3° posto: 8.0<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;studente altro&quot;</span><span class="p">&gt;</span>4° posto: 7.5<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;studente altro&quot;</span><span class="p">&gt;</span>5° posto: 6.0<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Crea array <code>$voti = [7.5, 9.5, 6.0, 8.5, 8.0]</code><br />
+2. Usa <code>max()</code>, <code>min()</code>, <code>array_sum()</code> per statistiche<br />
+3. Calcola media: <code>array_sum($voti) / count($voti)</code><br />
+4.  Usa <code>rsort()</code> per ordinare decrescente<br />
+5. Usa <code>foreach</code> con contatore per assegnare classi CSS ai primi 3</p>
+<hr />
+<h3><strong>Esercizio 3: Scheda Contatto</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> Array associativi, foreach con chiave-valore</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Scheda Contatto<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f9f9f9</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">campo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">label</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>📇 Contatto<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;campo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span>Nome:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> Mario Rossi
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;campo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span>Email:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> mario. rossi@email.it
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;campo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span>Telefono:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> 333-1234567
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;campo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span>Città:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> Roma
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;campo&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;label&quot;</span><span class="p">&gt;</span>Professione:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> Sviluppatore
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Crea array associativo <code>$contatto</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$contatto = [</span>
+<span class="x">    &quot;Nome&quot; =&gt; &quot;Mario Rossi&quot;,</span>
+<span class="x">    &quot;Email&quot; =&gt; &quot;mario.rossi@email.it&quot;,</span>
+<span class="x">    &quot;Telefono&quot; =&gt; &quot;333-1234567&quot;,</span>
+<span class="x">    &quot;Città&quot; =&gt; &quot;Roma&quot;,</span>
+<span class="x">    &quot;Professione&quot; =&gt; &quot;Sviluppatore&quot;</span>
+<span class="x">];</span>
+</code></pre></div>
+
+<ol start="2">
+<li>Usa <code>foreach ($contatto as $chiave =&gt; $valore)</code> per generare i campi</li>
+<li>Ogni campo è un <code>&lt;div&gt;</code> con classe "campo"</li>
+</ol>
+<hr />
+<h3><strong>Esercizio 4: Menu Ristorante</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> Array multidimensionali associativi</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Menu Ristorante<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f5f5f5</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">piatto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">nome</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#d32f2f</span><span class="p">;</span>
+<span class="w">            </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">prezzo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">1.3</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">            </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">categoria</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#FFC107</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">descrizione</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#666</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>🍝 Menu del Giorno<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;piatto&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;prezzo&quot;</span><span class="p">&gt;</span>€12.00<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nome&quot;</span><span class="p">&gt;</span>Spaghetti alla Carbonara<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;categoria&quot;</span><span class="p">&gt;</span>Primi<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;descrizione&quot;</span><span class="p">&gt;</span>Pasta con uova, guanciale e pecorino<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;piatto&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;prezzo&quot;</span><span class="p">&gt;</span>€18.00<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nome&quot;</span><span class="p">&gt;</span>Bistecca alla Fiorentina<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;categoria&quot;</span><span class="p">&gt;</span>Secondi<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;descrizione&quot;</span><span class="p">&gt;</span>Carne di manzo alla griglia<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;piatto&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;prezzo&quot;</span><span class="p">&gt;</span>€6.00<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nome&quot;</span><span class="p">&gt;</span>Tiramisù<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;categoria&quot;</span><span class="p">&gt;</span>Dolci<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;descrizione&quot;</span><span class="p">&gt;</span>Dessert con mascarpone e caffè<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Totale piatti nel menu: 3<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1. Crea array multidimensionale <code>$menu</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$menu = [</span>
+<span class="x">    [</span>
+<span class="x">        &quot;nome&quot; =&gt; &quot;Spaghetti alla Carbonara&quot;,</span>
+<span class="x">        &quot;categoria&quot; =&gt; &quot;Primi&quot;,</span>
+<span class="x">        &quot;prezzo&quot; =&gt; 12. 00,</span>
+<span class="x">        &quot;descrizione&quot; =&gt; &quot;Pasta con uova, guanciale e pecorino&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">        &quot;nome&quot; =&gt; &quot;Bistecca alla Fiorentina&quot;,</span>
+<span class="x">        &quot;categoria&quot; =&gt; &quot;Secondi&quot;,</span>
+<span class="x">        &quot;prezzo&quot; =&gt; 18.00,</span>
+<span class="x">        &quot;descrizione&quot; =&gt; &quot;Carne di manzo alla griglia&quot;</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">        &quot;nome&quot; =&gt; &quot;Tiramisù&quot;,</span>
+<span class="x">        &quot;categoria&quot; =&gt; &quot;Dolci&quot;,</span>
+<span class="x">        &quot;prezzo&quot; =&gt; 6.00,</span>
+<span class="x">        &quot;descrizione&quot; =&gt; &quot;Dessert con mascarpone e caffè&quot;</span>
+<span class="x">    ]</span>
+<span class="x">];</span>
+</code></pre></div>
+
+<ol start="2">
+<li>Usa <code>foreach</code> per scorrere l'array</li>
+<li>Genera HTML per ogni piatto</li>
+<li>Formatta prezzo con <code>number_format($prezzo, 2)</code></li>
+</ol>
+<hr />
+<h3><strong>Esercizio 5: Tabella Prodotti</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> Array multidimensionali, tabelle HTML, calcoli</p>
+<p><strong>Risultato HTML da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;! DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;it&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Inventario Negozio<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">            </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-collapse</span><span class="p">:</span><span class="w"> </span><span class="kc">collapse</span><span class="p">;</span>
+<span class="w">            </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="w"> </span><span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">th</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#ddd</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">tr</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f5f5f5</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">disponibile</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">green</span><span class="p">;</span>
+<span class="w">            </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">esaurito</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="w">            </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="nc">totale</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f0f0f0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">            </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>📦 Inventario Negozio<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Codice<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Nome Prodotto<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Prezzo<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Quantità<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Stato<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Valore Magazzino<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>A001<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Laptop Dell<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€899.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>15<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;disponibile&quot;</span><span class="p">&gt;</span>✅ Disponibile<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€13,485.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>A002<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Mouse Logitech<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€25.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>0<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;esaurito&quot;</span><span class="p">&gt;</span>⛔ Esaurito<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€0.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>A003<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Tastiera Meccanica<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€75.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;disponibile&quot;</span><span class="p">&gt;</span>✅ Disponibile<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>€600.00<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;totale&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Riepilogo Inventario<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Totale prodotti:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 3<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Prodotti disponibili:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> 2<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Valore totale magazzino:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> €14,085.00<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong><br />
+1.  Crea array <code>$inventario</code> con 3-4 prodotti:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$inventario = [</span>
+<span class="x">    [&quot;codice&quot; =&gt; &quot;A001&quot;, &quot;nome&quot; =&gt; &quot;Laptop Dell&quot;, &quot;prezzo&quot; =&gt; 899. 00, &quot;quantita&quot; =&gt; 15],</span>
+<span class="x">    [&quot;codice&quot; =&gt; &quot;A002&quot;, &quot;nome&quot; =&gt; &quot;Mouse Logitech&quot;, &quot;prezzo&quot; =&gt; 25.00, &quot;quantita&quot; =&gt; 0],</span>
+<span class="x">    [&quot;codice&quot; =&gt; &quot;A003&quot;, &quot;nome&quot; =&gt; &quot;Tastiera Meccanica&quot;, &quot;prezzo&quot; =&gt; 75. 00, &quot;quantita&quot; =&gt; 8]</span>
+<span class="x">];</span>
+</code></pre></div>
+
+<ol start="2">
+<li>Calcola <code>valore_magazzino = prezzo * quantita</code> per ogni prodotto</li>
+<li>Conta prodotti disponibili (quantità &gt; 0)</li>
+<li>Calcola valore totale magazzino</li>
+<li>Usa <code>number_format()</code> per formattare prezzi</li>
+</ol>
+<hr />
+<h3><strong>Esercizio 6: Calendario Settimanale</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> Array multidimensionali, foreach annidati</p>
+<p><strong>Risultato HTML da ottenere:</strong><br />
+```html</p>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Orario Settimanale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+        .giorno {
+            background-color: white;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+</body>
+</html>
