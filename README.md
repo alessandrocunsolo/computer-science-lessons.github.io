@@ -1,3 +1,7 @@
 # computer-science-lessons.github.io
 
-TEST
+## Esercizi HTML
+
+- [esercizi_di_riepilogo.html](html/esercizi_di_riepilogo.html)
+
+
