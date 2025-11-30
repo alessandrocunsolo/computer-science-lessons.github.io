@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esercizi_di_riepilogo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Lezione di Riepilogo: Tag HTML Fondamentali e Formattazione</h1>
+<h2>Obiettivi della Lezione</h2>
+<ul>
+<li>Ripassare i principali tag HTML strutturali e di formattazione</li>
+<li>Applicare le conoscenze in esercizi pratici progressivi</li>
+<li>Sviluppare capacità di analisi visiva → codice HTML</li>
+</ul>
+<hr />
+<h2>📚 Riepilogo Teorico</h2>
+<h3>Tag Strutturali</h3>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Descrizione</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>Paragrafo di testo</td>
+<td><code>&lt;p&gt;Questo è un paragrafo&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;h1&gt;.. .&lt;h6&gt;</code></td>
+<td>Intestazioni (6 livelli)</td>
+<td><code>&lt;h1&gt;Titolo principale&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;div&gt;</code></td>
+<td>Contenitore generico</td>
+<td><code>&lt;div&gt;Contenuto&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;ul&gt;/&lt;ol&gt;/&lt;li&gt;</code></td>
+<td>Liste (non ordinate/ordinate)</td>
+<td><code>&lt;ul&gt;&lt;li&gt;Elemento&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;table&gt;/&lt;tr&gt;/&lt;td&gt;/&lt;th&gt;</code></td>
+<td>Tabelle</td>
+<td><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;Cella&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;form&gt;</code></td>
+<td>Modulo per input utente</td>
+<td><code>&lt;form&gt;... &lt;/form&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;input&gt;</code></td>
+<td>Campo di input</td>
+<td><code>&lt;input type="text"&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Tag di Formattazione</h3>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Descrizione</th>
+<th>Esempio</th>
+<th>Risultato Visivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;strong&gt;</code> o <code>&lt;b&gt;</code></td>
+<td>Testo in grassetto</td>
+<td><code>&lt;strong&gt;testo&lt;/strong&gt;</code></td>
+<td><strong>testo</strong></td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code> o <code>&lt;i&gt;</code></td>
+<td>Testo in corsivo</td>
+<td><code>&lt;em&gt;testo&lt;/em&gt;</code></td>
+<td><em>testo</em></td>
+</tr>
+<tr>
+<td><code>&lt;u&gt;</code></td>
+<td>Testo sottolineato</td>
+<td><code>&lt;u&gt;testo&lt;/u&gt;</code></td>
+<td><u>testo</u></td>
+</tr>
+<tr>
+<td><code>&lt;mark&gt;</code></td>
+<td>Testo evidenziato</td>
+<td><code>&lt;mark&gt;testo&lt;/mark&gt;</code></td>
+<td>testo evidenziato</td>
+</tr>
+<tr>
+<td><code>&lt;small&gt;</code></td>
+<td>Testo piccolo</td>
+<td><code>&lt;small&gt;testo&lt;/small&gt;</code></td>
+<td>testo piccolo</td>
+</tr>
+<tr>
+<td><code>&lt;del&gt;</code></td>
+<td>Testo cancellato</td>
+<td><code>&lt;del&gt;testo&lt;/del&gt;</code></td>
+<td>~~testo~~</td>
+</tr>
+<tr>
+<td><code>&lt;ins&gt;</code></td>
+<td>Testo inserito</td>
+<td><code>&lt;ins&gt;testo&lt;/ins&gt;</code></td>
+<td>testo sottolineato</td>
+</tr>
+<tr>
+<td><code>&lt;sub&gt;</code></td>
+<td>Pedice</td>
+<td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+<td>H₂O</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;</code></td>
+<td>Apice</td>
+<td><code>x&lt;sup&gt;2&lt;/sup&gt;</code></td>
+<td>x²</td>
+</tr>
+<tr>
+<td><code>&lt;br&gt;</code></td>
+<td>Interruzione di riga</td>
+<td><code>testo&lt;br&gt;nuova riga</code></td>
+<td>a capo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nota:</strong> <code>&lt;strong&gt;</code> e <code>&lt;em&gt;</code> sono semantici (indicano importanza), mentre <code>&lt;b&gt;</code> e <code>&lt;i&gt;</code> sono solo visuali.</p>
+<hr />
+<h2>🎯 Esercizi Pratici</h2>
+<h3><strong>Esercizio 1: Primo Paragrafo</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Benvenuto nel corso di HTML!  Questo è il tuo primo esercizio.
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea un paragrafo con il testo mostrato sopra. </p>
+<hr />
+<h3><strong>Esercizio 2: Formattazione Base</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Questo testo è normale, questo è in grassetto e questo è in corsivo.
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea un paragrafo usando <code>&lt;strong&gt;</code> per il grassetto e <code>&lt;em&gt;</code> per il corsivo.</p>
+<hr />
+<h3><strong>Esercizio 3: Intestazioni e Formattazione</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="gh">Il Mio Primo Sito Web</span>
+<span class="gh">---------------------</span>
+Questa è la mia pagina personale dove imparo HTML. 
+
+IMPORTANTE: Non dimenticare di salvare il tuo lavoro!
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h1&gt;</code> per il titolo, <code>&lt;p&gt;</code> per il paragrafo normale, e <code>&lt;strong&gt;</code> per evidenziare "IMPORTANTE".</p>
+<hr />
+<h3><strong>Esercizio 4: Testo con Interruzioni di Riga</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Indirizzo di Spedizione:
+Via Roma, 123
+00100 Roma
+Italia
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h3&gt;</code> per "Indirizzo di Spedizione:" e <code>&lt;p&gt;</code> con <code>&lt;br&gt;</code> per andare a capo.</p>
+<hr />
+<h3><strong>Esercizio 5: Formattazioni Multiple</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Offerta Speciale! 
+Prezzo originale: 100€
+Prezzo scontato: 75€
+Risparmia il 25%! 
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h2&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;del&gt;</code> per il prezzo originale, <code>&lt;strong&gt;</code> per il prezzo scontato, e <code>&lt;mark&gt;</code> per evidenziare "Risparmia il 25%!". </p>
+<hr />
+<h3><strong>Esercizio 6: Lista con Formattazione</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Ingredienti per la Pizza:
+• Farina (500g)
+• Acqua tiepida
+• Lievito di birra
+• Sale
+• Pomodoro pelato
+
+Nota: Tutti gli ingredienti devono essere freschi!
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h3&gt;</code>, <code>&lt;ul&gt;</code> con <code>&lt;li&gt;</code>, e <code>&lt;small&gt;</code> per la nota.  Usa <code>&lt;strong&gt;</code> per i pesi.</p>
+<hr />
+<h3><strong>Esercizio 7: Formule Scientifiche</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Formule Chimiche e Matematiche
+
+L&#39;acqua ha formula H₂O
+L&#39;anidride carbonica è CO₂
+Il teorema di Pitagora: a² + b² = c²
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h2&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;sub&gt;</code> per i pedici e <code>&lt;sup&gt;</code> per gli apici. </p>
+<hr />
+<h3><strong>Esercizio 8: Lista Ordinata con Evidenziazioni</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">Proc</span><span class="nv">edura</span><span class="w"> </span><span class="nb">di</span><span class="w"> </span><span class="nv">Sicurezza</span><span class="p">:</span>
+<span class="err">1</span><span class="nf">.</span><span class="w"> </span><span class="nv">Verificare</span><span class="w"> </span><span class="nv">che</span><span class="w"> </span><span class="nv">l</span><span class="err">&#39;</span><span class="nv">area</span><span class="w"> </span><span class="nv">sia</span><span class="w"> </span><span class="nv">sicura</span>
+<span class="err">2</span><span class="nf">.</span><span class="w"> </span><span class="nv">Indossare</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">dispositivi</span><span class="w"> </span><span class="nb">di</span><span class="w"> </span><span class="nv">protezione</span>
+<span class="err">3</span><span class="nf">.</span><span class="w">  </span><span class="nv">Controllare</span><span class="w"> </span><span class="nv">le</span><span class="w"> </span><span class="nv">apparecchiature</span>
+<span class="err">4</span><span class="nf">.</span><span class="w"> </span><span class="nv">Procedere</span><span class="w"> </span><span class="nv">con</span><span class="w"> </span><span class="nv">cautela</span>
+<span class="err">5</span><span class="nf">.</span><span class="w"> </span><span class="nv">Documentare</span><span class="w"> </span><span class="nv">ogni</span><span class="w"> </span><span class="nv">passaggio</span>
+
+<span class="nl">ATTENZIONE:</span><span class="w"> </span><span class="nf">Non</span><span class="w"> </span><span class="nv">saltare</span><span class="w"> </span><span class="nv">nessun</span><span class="w"> </span><span class="nv">passaggio</span><span class="err">!</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa <code>&lt;h3&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;em&gt;</code> per le parole chiave nelle istruzioni, e <code>&lt;strong&gt;</code> + <code>&lt;mark&gt;</code> per l'avvertenza finale.</p>
+<hr />
+<h3><strong>Esercizio 9: Contenitori con Formattazione Avanzata</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">[Novità]</span>
+<span class="na">Nuovo Prodotto Disponibile!</span>
+<span class="na">Il nostro ultimo smartphone è finalmente in vendita. </span>
+<span class="na">Caratteristiche principali</span><span class="o">:</span><span class="w"> </span><span class="s">5G, 128GB, Fotocamera 48MP</span>
+
+<span class="k">[Aggiornamento]</span>
+<span class="na">Versione 2.0 Rilasciata</span>
+<span class="na">La vecchia versione 1.5 non è più supportata. </span>
+<span class="na">Aggiornare immediatamente alla nuova versione.</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea due <code>&lt;div&gt;</code>, ognuno con:<br />
+- <code>&lt;h4&gt;</code> per la categoria<br />
+- <code>&lt;strong&gt;</code> per i titoli principali<br />
+- <code>&lt;p&gt;</code> per le descrizioni<br />
+- <code>&lt;del&gt;</code> per la versione obsoleta<br />
+- <code>&lt;em&gt;</code> per enfatizzare "immediatamente"</p>
+<hr />
+<h3><strong>Esercizio 10: Tabella Semplice</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>| Prodotto    | Prezzo | Disponibilità |
+|-------------|--------|---------------|
+| Laptop      | 899€   | In stock      |
+| Mouse       | 25€    | Esaurito      |
+| Tastiera    | 75€    | In stock      |
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea una tabella con intestazioni (<code>&lt;th&gt;</code>).  Usa <code>&lt;strong&gt;</code> per "In stock" e <code>&lt;del&gt;</code> per "Esaurito".</p>
+<hr />
+<h3><strong>Esercizio 11: Form con Etichette Formattate</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Registrazione</span><span class="w"> </span><span class="n">Utente</span>
+
+<span class="n">Nome</span><span class="w"> </span><span class="nl">completo</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">____________________</span><span class="o">]</span>
+<span class="nl">Email</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">____________________</span><span class="o">]</span>
+<span class="nl">Password</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">____________________</span><span class="o">]</span>
+
+<span class="nl">Nota</span><span class="p">:</span><span class="w"> </span><span class="n">Tutti</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">campi</span><span class="w"> </span><span class="n">sono</span><span class="w"> </span><span class="n">obbligatori</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea un form con:<br />
+- <code>&lt;h2&gt;</code> per il titolo<br />
+- Tre campi di input con etichette prima<br />
+- <code>&lt;small&gt;</code> + <code>&lt;em&gt;</code> per la nota in fondo<br />
+- Un <code>&lt;br&gt;</code> tra ogni campo</p>
+<hr />
+<h3><strong>Esercizio 12: Articolo Formattato</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>La Storia del Computer
+
+Il primo computer elettronico, l&#39;ENIAC, fu costruito nel 1946.  Era grande come una stanza e pesava 30 tonnellate! 
+
+Curiosità: L&#39;ENIAC consumava 160 kW di energia elettrica. 
+
+Oggi i computer sono migliaia di volte più potenti e stanno nel palmo della mano.
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Usa:<br />
+- <code>&lt;h1&gt;</code> per il titolo<br />
+- <code>&lt;p&gt;</code> per i paragrafi<br />
+- <code>&lt;strong&gt;</code> per "ENIAC" (prima occorrenza)<br />
+- <code>&lt;em&gt;</code> per "1946" e "30 tonnellate"<br />
+- <code>&lt;small&gt;</code> per "Curiosità:"<br />
+- <code>&lt;mark&gt;</code> per evidenziare "migliaia di volte più potenti"</p>
+<hr />
+<h3><strong>Esercizio 13: Lista Mista con Formattazione Complessa</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐⭐ Esperto</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Piano di Studio
+
+Materie da studiare:
+• Matematica (priorità alta)
+• Storia
+• Scienze (esame il 15/12)
+• Inglese
+
+Compiti completati:
+1. ~~Esercizi di algebra~~
+2. ~~Tema di italiano~~
+3.  Relazione di scienze (in corso)
+4. Traduzione inglese
+
+Promemoria: Non dimenticare di rivedere la matematica!
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Combina:<br />
+- <code>&lt;h2&gt;</code> per il titolo principale<br />
+- <code>&lt;h3&gt;</code> per i sottotitoli<br />
+- <code>&lt;ul&gt;</code> con <code>&lt;strong&gt;</code> per le priorità<br />
+- <code>&lt;ol&gt;</code> con <code>&lt;del&gt;</code> per i compiti completati<br />
+- <code>&lt;em&gt;</code> per "(in corso)"<br />
+- <code>&lt;p&gt;</code> + <code>&lt;strong&gt;</code> + <code>&lt;mark&gt;</code> per il promemoria</p>
+<hr />
+<h3><strong>Esercizio 14: Tabella con Dati Scientifici</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐⭐ Esperto</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code>Elementi Chimici
+
+| Elemento | Simbolo | Numero Atomico | Massa Atomica  |
+|----------|---------|----------------|----------------|
+| Idrogeno | H       | 1              | 1.008          |
+| Carbonio | C       | 6              | 12.011         |
+| Ossigeno | O       | 8              | 15.999         |
+| Azoto    | N       | 7              | 14.007         |
+
+Nota: Le masse atomiche sono espresse in u (unità di massa atomica)
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea:<br />
+- <code>&lt;h2&gt;</code> per il titolo<br />
+- Una tabella completa<br />
+- <code>&lt;strong&gt;</code> per i simboli chimici<br />
+- <code>&lt;small&gt;</code> + <code>&lt;em&gt;</code> per la nota<br />
+- <code>&lt;sub&gt;</code> se vuoi scrivere le formule chimiche nella nota (es: H₂O come esempio)</p>
+<hr />
+<h3><strong>Esercizio 15: Progetto Completo - Landing Page</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐⭐⭐ Master</p>
+<p><strong>Risultato da ottenere:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Corso</span><span class="w"> </span><span class="n">Completo</span><span class="w"> </span><span class="n">di</span><span class="w"> </span><span class="n">HTML</span>
+<span class="o">======================</span>
+
+<span class="n">Impara</span><span class="w"> </span><span class="n">lo</span><span class="w"> </span><span class="n">Sviluppo</span><span class="w"> </span><span class="n">Web</span><span class="w"> </span><span class="n">da</span><span class="w"> </span><span class="n">Zero</span><span class="o">!</span><span class="w"> </span>
+<span class="o">-------------------------------</span>
+
+<span class="n">Cosa</span><span class="w"> </span><span class="n">Imparerai</span><span class="o">:</span>
+
+<span class="n">Modulo</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">Le</span><span class="w"> </span><span class="n">Basi</span>
+<span class="err">•</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="n">strutturali</span>
+<span class="err">•</span><span class="w"> </span><span class="n">Formattazione</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">testo</span>
+<span class="err">•</span><span class="w"> </span><span class="n">Liste</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">tabelle</span>
+
+<span class="n">Modulo</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">Elementi</span><span class="w"> </span><span class="n">Avanzati</span>
+<span class="mf">1.</span><span class="w"> </span><span class="n">Form</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">input</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">Multimedia</span><span class="w"> </span><span class="p">(</span><span class="n">immagini</span><span class="p">,</span><span class="w"> </span><span class="n">video</span><span class="p">,</span><span class="w"> </span><span class="n">audio</span><span class="p">)</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">Semantica</span><span class="w"> </span><span class="n">HTML5</span>
+
+<span class="n">Dettagli</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">Corso</span><span class="o">:</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Caratteristica</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Dettaglio</span><span class="w">                    </span><span class="o">|</span>
+<span class="o">|----------------|------------------------------|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Durata</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="n">ore</span><span class="w">                       </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Prezzo</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="o">~~</span><span class="mi">200</span><span class="err">€</span><span class="o">~~</span><span class="w"> </span><span class="mi">149</span><span class="err">€</span><span class="w"> </span><span class="p">(</span><span class="n">sconto</span><span class="w"> </span><span class="mi">25</span><span class="o">%</span><span class="p">)</span><span class="w">  </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Modalità</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="n">Online</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Esercitazioni</span><span class="w">       </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Certificato</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Incluso</span><span class="w">                      </span><span class="o">|</span>
+
+<span class="n">Iscriviti</span><span class="w"> </span><span class="n">Subito</span><span class="o">!</span><span class="w"> </span>
+
+<span class="nl">Nome</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">____________________</span><span class="p">]</span>
+<span class="nl">Cognome</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">____________________</span><span class="p">]</span>
+<span class="nl">Email</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">____________________</span><span class="p">]</span>
+<span class="nl">Telefono</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">____________________</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">Invia</span><span class="w"> </span><span class="n">Iscrizione</span><span class="p">]</span>
+
+<span class="n">Offerta</span><span class="w"> </span><span class="n">valida</span><span class="w"> </span><span class="n">fino</span><span class="w"> </span><span class="n">al</span><span class="w"> </span><span class="mi">31</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">2025</span>
+<span class="n">I</span><span class="w"> </span><span class="n">posti</span><span class="w"> </span><span class="n">sono</span><span class="w"> </span><span class="n">limitati</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="n">partecipanti</span><span class="o">!</span><span class="w"> </span>
+
+<span class="n">Per</span><span class="w"> </span><span class="n">informazioni</span><span class="o">:</span><span class="w"> </span><span class="n">info</span><span class="p">@</span><span class="n">corshtml</span><span class="p">.</span><span class="n">it</span>
+</code></pre></div>
+
+<p><strong>Consegna:</strong> Crea una landing page completa che include:<br />
+- <code>&lt;h1&gt;</code> per il titolo principale con sottotitolo <code>&lt;h2&gt;</code><br />
+- <code>&lt;h3&gt;</code> per le sezioni<br />
+- Due liste (una <code>&lt;ul&gt;</code> e una <code>&lt;ol&gt;</code>) con elementi in <code>&lt;strong&gt;</code> e <code>&lt;em&gt;</code><br />
+- Una tabella con:<br />
+  - <code>&lt;del&gt;</code> per il prezzo originale<br />
+  - <code>&lt;strong&gt;</code> per il prezzo scontato<br />
+  - <code>&lt;mark&gt;</code> per lo sconto percentuale<br />
+- Un form completo con 4 campi e pulsante submit<br />
+- Paragrafi finali con:<br />
+  - <code>&lt;small&gt;</code> per la data di scadenza<br />
+  - <code>&lt;strong&gt;</code> + <code>&lt;mark&gt;</code> per "I posti sono limitati"<br />
+  - <code>&lt;em&gt;</code> per l'email di contatto</p>
+<hr />
+<h2>✅ Soluzioni</h2>
+<h3>Soluzione Esercizio 1</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Benvenuto nel corso di HTML! Questo è il tuo primo esercizio.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 2</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Questo testo è normale, <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>questo è in grassetto<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> e <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>questo è in corsivo<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 3</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Il Mio Primo Sito Web<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Questa è la mia pagina personale dove imparo HTML.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>IMPORTANTE:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Non dimenticare di salvare il tuo lavoro!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 4</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Indirizzo di Spedizione:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  Via Roma, 123<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  00100 Roma<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Italia
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 5</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Offerta Speciale!<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Prezzo originale: <span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>100€<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Prezzo scontato: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>75€<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>Risparmia il 25%!<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 6</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Ingredienti per la Pizza:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Farina <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>(500g)<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Acqua <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>tiepida<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Lievito di birra<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Sale<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Pomodoro pelato<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;</span>Nota: Tutti gli ingredienti devono essere freschi!<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 7</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Formule Chimiche e Matematiche<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>L&#39;acqua ha formula H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>L&#39;anidride carbonica è CO<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Il teorema di Pitagora: a<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> + b<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;</span> = c<span class="p">&lt;</span><span class="nt">sup</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sup</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 8</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Procedura di Sicurezza:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Verificare che l&#39;area sia <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>sicura<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Indossare i <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>dispositivi di protezione<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Controllare le <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>apparecchiature<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Procedere con <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>cautela<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Documentare<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> ogni passaggio<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>ATTENZIONE: Non saltare nessun passaggio!<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 9</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Novità<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Nuovo Prodotto Disponibile!<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Il nostro ultimo smartphone è finalmente in vendita. <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Caratteristiche principali: <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>5G<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>128GB<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Fotocamera 48MP<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Aggiornamento<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Versione 2.0 Rilasciata<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>La <span class="p">&lt;</span><span class="nt">del</span><span class="p">&gt;</span>vecchia versione 1. 5<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;</span> non è più supportata. <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Aggiornare <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>immediatamente<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> alla nuova versione.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 10</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Prodotto<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Prezzo<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Disponibilità<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Laptop<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>899€<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>In stock<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Mouse<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>25€<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">del</span><span class="p">&gt;</span>Esaurito<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Tastiera<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>75€<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>In stock<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 11</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Registrazione Utente<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  Nome completo: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Email: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Password: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;password&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">small</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Nota: Tutti i campi sono obbligatori<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 12</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>La Storia del Computer<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  Il primo computer elettronico, l&#39;<span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>ENIAC<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>, fu costruito nel <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>1946<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>. 
+  Era grande come una stanza e pesava <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>30 tonnellate<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>!
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;</span>Curiosità:<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span> L&#39;ENIAC consumava 160 kW di energia elettrica.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  Oggi i computer sono <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>migliaia di volte più potenti<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;</span> e stanno nel palmo della mano. 
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 13</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Piano di Studio<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Materie da studiare:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Matematica <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>(priorità alta)<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Storia<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Scienze <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>(esame il 15/12)<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Inglese<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Compiti completati:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">del</span><span class="p">&gt;</span>Esercizi di algebra<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">del</span><span class="p">&gt;</span>Tema di italiano<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Relazione di scienze <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>(in corso)<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Traduzione inglese<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>Promemoria: Non dimenticare di rivedere la matematica!<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 14</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Elementi Chimici<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Elemento<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Simbolo<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Numero Atomico<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Massa Atomica<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Idrogeno<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>H<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1. 008<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Carbonio<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>C<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>6<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>12.011<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Ossigeno<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>O<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>15.999<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Azoto<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>N<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>7<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>14.007<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Nota: Le masse atomiche sono espresse in u (unità di massa atomica).  
+Esempio: l&#39;acqua si scrive H<span class="p">&lt;</span><span class="nt">sub</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">sub</span><span class="p">&gt;</span>O<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">small</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3>Soluzione Esercizio 15</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Corso Completo di HTML<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Impara lo Sviluppo Web da Zero!<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Cosa Imparerai:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Modulo 1: Le Basi<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Tag strutturali<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Formattazione del testo<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Liste e tabelle<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Modulo 2: Elementi Avanzati<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Form e input<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Multimedia <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>(immagini, video, audio)<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Semantica HTML5<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Dettagli del Corso:<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Caratteristica<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Dettaglio<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Durata<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>40 ore<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Prezzo<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">del</span><span class="p">&gt;</span>200€<span class="p">&lt;/</span><span class="nt">del</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>149€<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>(sconto 25%)<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Modalità<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Online + Esercitazioni<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Certificato<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Incluso<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Iscriviti Subito!<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  Nome: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Cognome: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Email: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  Telefono: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;tel&quot;</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Invia Iscrizione&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">small</span><span class="p">&gt;</span>Offerta valida fino al 31/12/2025<span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;&lt;</span><span class="nt">mark</span><span class="p">&gt;</span>I posti sono limitati a 30 partecipanti!<span class="p">&lt;/</span><span class="nt">mark</span><span class="p">&gt;&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Per informazioni: <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>info@corshtml.it<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>💡 Suggerimenti Didattici</h2>
+<h3>Come Usare Questi Esercizi in Classe:</h3>
+<ol>
+<li><strong>Proiezione del Risultato</strong>: Mostra agli studenti il risultato visivo da ottenere</li>
+<li><strong>Tempo di Lavoro</strong>: <br />
+   - Esercizi 1-4: 5 minuti ciascuno<br />
+   - Esercizi 5-8: 7-10 minuti ciascuno<br />
+   - Esercizi 9-12: 10-15 minuti ciascuno<br />
+   - Esercizi 13-14: 15-20 minuti ciascuno<br />
+   - Esercizio 15: 25-30 minuti</li>
+<li><strong>Modalità di Lavoro</strong>: <br />
+   - Esercizi 1-6: lavoro individuale<br />
+   - Esercizi 7-12: individuale o a coppie<br />
+   - Esercizi 13-15: lavoro a coppie o piccoli gruppi</li>
+<li><strong>Correzione Collettiva</strong>: Mostra la soluzione e discuti alternative valide</li>
+<li><strong>Testing</strong>: Fai aprire i file HTML nel browser per vedere il risultato reale</li>
+</ol>
+<h3>Progressione Didattica:</h3>
+<p><strong>Fase 1 - Base (Esercizi 1-4):</strong><br />
+- Introduzione ai tag fondamentali<br />
+- Prime formattazioni semplici<br />
+- Uso di <code>&lt;br&gt;</code> per layout base</p>
+<p><strong>Fase 2 - Intermedia (Esercizi 5-8):</strong><br />
+- Combinazione di tag strutturali e formattazione<br />
+- Liste con contenuti formattati<br />
+- Tag scientifici (<code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code>)</p>
+<p><strong>Fase 3 - Avanzata (Esercizi 9-12):</strong><br />
+- Contenitori complessi con formattazione interna<br />
+- Tabelle con dati formattati<br />
+- Form con elementi accessori</p>
+<p><strong>Fase 4 - Esperta (Esercizi 13-15):</strong><br />
+- Progetti completi multi-sezione<br />
+- Integrazione di tutti i tag appresi<br />
+- Simulazione di pagine web reali</p>
+<h3>Attività Supplementari:</h3>
+<ol>
+<li><strong>Debugging Challenge</strong>: Fornisci codice con errori intenzionali</li>
+<li><strong>Design Challenge</strong>: Chiedi di aggiungere CSS agli esercizi completati</li>
+<li><strong>Accessibility Check</strong>: Insegna a validare il codice con strumenti W3C</li>
+<li><strong>Creative Extension</strong>: Fai personalizzare l'esercizio 15 con contenuti propri</li>
+</ol>
+<h3>Valutazione Progressiva:</h3>
+<ul>
+<li><strong>Esercizi 1-4</strong>: Competenza base (6/10)</li>
+<li><strong>Esercizi 5-8</strong>: Competenza discreta (7/10)</li>
+<li><strong>Esercizi 9-11</strong>: Competenza buona (8/10)</li>
+<li><strong>Esercizi 12-13</strong>: Competenza ottima (9/10)</li>
+<li><strong>Esercizi 14-15</strong>: Competenza eccellente (10/10)</li>
+</ul>
+<h3>Differenziazione:</h3>
+<p><strong>Per studenti in difficoltà:</strong><br />
+- Fornisci lo scheletro HTML base<br />
+- Evidenzia nel risultato visivo quale tag usare<br />
+- Lavoro a coppie con peer tutoring</p>
+<p><strong>Per studenti avanzati:</strong><br />
+- Aggiungi vincoli (es: "usa solo tag semantici")<br />
+- Chiedi di validare il codice HTML5<br />
+- Introduci attributi aggiuntivi (<code>id</code>, <code>class</code>, <code>title</code>)</p>
+<hr />
+<h2>📝 Checklist</h2>
+<p>Prima di considerare completo l'esercizio, verifica:</p>
+<ul>
+<li>[ ] Il codice è indentato correttamente (2 o 4 spazi per livello)</li>
+<li>[ ] Tutti i tag sono aperti e chiusi correttamente</li>
+<li>[ ] Il risultato nel browser corrisponde a quello richiesto</li>
+<li>[ ] Non ci sono errori di sintassi (testa con il validatore W3C)</li>
+<li>[ ] Hai usato i tag corretti per la semantica (es: <code>&lt;strong&gt;</code> invece di <code>&lt;b&gt;</code> per enfasi)</li>
+<li>[ ] La formattazione è consistente (stesso stile di indentazione)</li>
+<li>[ ] Hai testato il codice in almeno un browser</li>
+</ul>
+<hr />
+<h2>🎓 Approfondimenti</h2>
+<h3>Differenza tra Tag Semantici e Visuali</h3>
+<p><strong>Semantici</strong> (da preferire):<br />
+- <code>&lt;strong&gt;</code> → indica importanza forte<br />
+- <code>&lt;em&gt;</code> → indica enfasi<br />
+- Aiutano i motori di ricerca e gli screen reader</p>
+<p><strong>Visuali</strong> (solo aspetto):<br />
+- <code>&lt;b&gt;</code> → solo grassetto visivo<br />
+- <code>&lt;i&gt;</code> → solo corsivo visivo<br />
+- Non aggiungono significato al contenuto</p>
+<h3>Best Practices:</h3>
+<ol>
+<li><strong>Usa tag semantici quando possibile</strong></li>
+<li><strong>Non usare tag di formattazione per il layout</strong> (usa CSS)</li>
+<li><strong><code>&lt;br&gt;</code> va usato con moderazione</strong> (preferisci CSS per spaziature)</li>
+<li><strong>Testa sempre su browser diversi</strong></li>
+<li><strong>Valida il codice</strong> con <a href="https://validator.w3.org/">validator.w3.org</a></li>
+</ol>
+<hr />
+<h2>🔧 Strumenti Consigliati</h2>
+<h3>Editor:</h3>
+<ul>
+<li><strong>VS Code</strong> (con estensione Live Server)</li>
+<li><strong>Sublime Text</strong></li>
+<li><strong>Notepad++</strong> (Windows)</li>
+<li><strong>Brackets</strong> (con live preview)</li>
+</ul>
+<h3>Testing:</h3>
+<ul>
+<li><strong>Chrome DevTools</strong> (F12)</li>
+<li><strong>Firefox Developer Tools</strong></li>
+<li><strong>W3C Markup Validation Service</strong></li>
+</ul>
+<h3>Risorse:</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/it/docs/Web/HTML">MDN Web Docs</a></li>
+<li><a href="https://www.w3schools.com/html/">W3Schools HTML Tutorial</a></li>
+<li><a href="https://htmlreference.io/">HTML Reference</a></li>
+</ul>
+<hr />
+</body>
+</html>
