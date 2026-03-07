@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640" role="img" aria-labelledby="title desc">
+  <title id="title">Rendering esercizio 1 - Iscrizione Newsletter</title>
+  <desc id="desc">Mockup della pagina HTML con form newsletter.</desc>
+  <rect width="900" height="640" fill="#f5f7fb"/>
+  <rect x="140" y="50" width="620" height="540" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+  <text x="170" y="100" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2937">Iscrizione Newsletter</text>
+  <text x="170" y="135" font-family="Arial, sans-serif" font-size="16" fill="#4b5563">Compila i campi e conferma l'informativa privacy</text>
+
+  <text x="170" y="185" font-family="Arial, sans-serif" font-size="15" fill="#111827">Nome e Cognome *</text>
+  <rect x="170" y="195" width="560" height="44" rx="6" fill="#ffffff" stroke="#9ca3af"/>
+
+  <text x="170" y="275" font-family="Arial, sans-serif" font-size="15" fill="#111827">Email *</text>
+  <rect x="170" y="285" width="560" height="44" rx="6" fill="#ffffff" stroke="#9ca3af"/>
+
+  <rect x="170" y="360" width="20" height="20" rx="3" fill="#ffffff" stroke="#6b7280"/>
+  <text x="200" y="376" font-family="Arial, sans-serif" font-size="15" fill="#111827">Accetto l'informativa privacy *</text>
+
+  <rect x="170" y="425" width="160" height="42" rx="8" fill="#2563eb"/>
+  <text x="226" y="451" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Invia</text>
+
+  <rect x="350" y="425" width="160" height="42" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="407" y="451" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#374151">Reset</text>
+
+  <text x="170" y="515" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">* Campi obbligatori</text>
+</svg>

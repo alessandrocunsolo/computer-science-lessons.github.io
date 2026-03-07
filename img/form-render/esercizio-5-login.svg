@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="660" viewBox="0 0 1020 660" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 5 - Login con risultato su pagina separata</title>
+  <desc id="desc">Mockup della pagina login e della pagina risultato login.</desc>
+  <rect width="1020" height="660" fill="#f5f8fc"/>
+
+  <rect x="35" y="35" width="460" height="585" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">login.php</text>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Form accesso</text>
+
+  <text x="60" y="155" font-family="Arial, sans-serif" font-size="14" fill="#111827">Username</text>
+  <rect x="60" y="166" width="410" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="60" y="235" font-family="Arial, sans-serif" font-size="14" fill="#111827">Password</text>
+  <rect x="60" y="246" width="410" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <rect x="60" y="315" width="160" height="38" rx="8" fill="#2563eb"/>
+  <text x="117" y="339" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">Accedi</text>
+
+  <text x="505" y="320" font-family="Arial, sans-serif" font-size="28" fill="#64748b">→</text>
+
+  <rect x="525" y="35" width="460" height="585" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="550" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">risultato_login.php</text>
+  <text x="550" y="100" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Esito autenticazione</text>
+
+  <rect x="550" y="150" width="410" height="120" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="572" y="190" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#9a3412">Credenziali non corrette</text>
+  <text x="572" y="218" font-family="Arial, sans-serif" font-size="13" fill="#7c2d12">Username o password errati</text>
+
+  <rect x="550" y="290" width="410" height="120" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="572" y="330" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#065f46">Login riuscito</text>
+  <text x="572" y="358" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Benvenuto, studente</text>
+
+  <rect x="550" y="430" width="180" height="36" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="592" y="453" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#374151">Torna al login</text>
+</svg>

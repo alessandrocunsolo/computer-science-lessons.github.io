@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="700" viewBox="0 0 1020 700" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 4 - Registrazione con risultato su pagina separata</title>
+  <desc id="desc">Mockup con pagina form registrazione e pagina risultato registrazione.</desc>
+  <rect width="1020" height="700" fill="#f4f7fc"/>
+
+  <rect x="35" y="35" width="460" height="625" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">registrazione.php</text>
+  <text x="60" y="100" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Form utente</text>
+  <g font-family="Arial, sans-serif" font-size="13" fill="#111827">
+    <text x="60" y="140">Nome</text><rect x="60" y="148" width="410" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="60" y="200">Cognome</text><rect x="60" y="208" width="410" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="60" y="260">Email</text><rect x="60" y="268" width="410" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="60" y="320">Password</text><rect x="60" y="328" width="410" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="60" y="380">Conferma Password</text><rect x="60" y="388" width="410" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="60" y="440">Data di nascita</text><rect x="60" y="448" width="220" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  </g>
+  <rect x="60" y="498" width="16" height="16" rx="3" fill="#fff" stroke="#6b7280"/>
+  <text x="85" y="511" font-family="Arial, sans-serif" font-size="13" fill="#111827">Accetto i termini</text>
+  <rect x="60" y="535" width="170" height="36" rx="8" fill="#2563eb"/>
+  <text x="112" y="558" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">Registrati</text>
+
+  <text x="505" y="340" font-family="Arial, sans-serif" font-size="28" fill="#64748b">→</text>
+
+  <rect x="525" y="35" width="460" height="625" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="550" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">risultato_registrazione.php</text>
+  <text x="550" y="100" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Validazione e riepilogo</text>
+
+  <rect x="550" y="145" width="410" height="120" rx="8" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="572" y="180" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#9a3412">Errori di validazione</text>
+  <text x="572" y="210" font-family="Arial, sans-serif" font-size="13" fill="#7c2d12">- Email non valida</text>
+  <text x="572" y="232" font-family="Arial, sans-serif" font-size="13" fill="#7c2d12">- Password troppo corta</text>
+
+  <rect x="550" y="290" width="410" height="180" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="572" y="325" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#065f46">Riepilogo registrazione</text>
+  <text x="572" y="355" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Nome: Mario</text>
+  <text x="572" y="377" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Cognome: Rossi</text>
+  <text x="572" y="399" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Email: mario@email.it</text>
+  <text x="572" y="421" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Password: ••••••••</text>
+
+  <rect x="550" y="500" width="210" height="36" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="590" y="523" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#374151">Torna alla registrazione</text>
+</svg>

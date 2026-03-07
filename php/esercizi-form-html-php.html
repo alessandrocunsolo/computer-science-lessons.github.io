@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esercizi-form-html-php</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Esercizi: Form HTML e Backend in PHP</h1>
+<h2>Obiettivi della Scheda</h2>
+<ul>
+<li>Progettare form HTML complete e accessibili</li>
+<li>Gestire dati inviati con metodo <code>POST</code> e <code>GET</code></li>
+<li>Validare input lato server con PHP</li>
+<li>Mostrare messaggi di errore e conferma all'utente</li>
+<li>Implementare la logica di ricerca con e senza cambio pagina</li>
+</ul>
+<hr />
+<h2>📌 Indicazioni generali</h2>
+<ul>
+<li>Crea un file PHP separato per ogni esercizio (o i file indicati nella consegna).</li>
+<li>Usa sempre:</li>
+<li><code>&lt;!DOCTYPE html&gt;</code></li>
+<li><code>&lt;html lang="it"&gt;</code></li>
+<li><code>&lt;meta charset="UTF-8"&gt;</code></li>
+<li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></li>
+<li>Non usare database in questa scheda: usa variabili e array PHP.</li>
+<li>Non usare AJAX o JavaScript per la logica richiesta.</li>
+<li>Inserisci messaggi chiari in italiano per errori e successi.</li>
+</ul>
+<hr />
+<h2>🎯 Esercizi Pratici</h2>
+<h3><strong>Esercizio 1: Somma tra Due Numeri</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> form HTML, <code>POST</code>, conversione numerica, output base</p>
+<p><strong>Scenario:</strong><br />
+Realizza una form in <code>somma.php</code> che invia i dati a <code>risultato_somma.php</code>, dove viene calcolata e mostrata la somma.</p>
+<p><strong>Consegna:</strong><br />
+1. Crea in <code>somma.php</code> una form con campi <code>numero1</code> e <code>numero2</code> (tipo <code>number</code>) e pulsante <code>Calcola</code>.<br />
+2. Imposta <code>action="risultato_somma.php"</code> e metodo <code>POST</code>.<br />
+3. In <code>risultato_somma.php</code>, recupera i due valori e calcola la somma.<br />
+4. Mostra il risultato con una frase chiara (es. <code>La somma è: ...</code>).<br />
+5. Gestisci il caso di campi vuoti con un messaggio di errore semplice nella pagina risultato.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio Semplice 1 - Somma" src="../img/form-render/semplice-1-somma.svg" /></p>
+<hr />
+<h3><strong>Esercizio 2: Operazione tra Due Numeri con Select Operatore</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> <code>POST</code>, <code>select</code>, strutture condizionali <code>if/switch</code></p>
+<p><strong>Scenario:</strong><br />
+Realizza una form in <code>calcolatrice_base.php</code> che invia i dati a <code>risultato_operazione.php</code>, dove viene eseguito il calcolo.</p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form con:<br />
+   - <code>numero1</code> (number)<br />
+   - <code>operatore</code> (select con opzioni <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>)<br />
+   - <code>numero2</code> (number)<br />
+   - pulsante <code>Esegui</code><br />
+2. Imposta <code>action="risultato_operazione.php"</code> e metodo <code>POST</code>.<br />
+3. In <code>risultato_operazione.php</code>, usa <code>if/elseif</code> oppure <code>switch</code> per eseguire l'operazione selezionata.<br />
+4. Mostra il risultato in formato: <code>a operatore b = risultato</code>.<br />
+5. Gestisci la divisione per zero con messaggio dedicato nella pagina risultato.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio Semplice 2 - Operazione con Select" src="../img/form-render/semplice-2-operazione-select.svg" /></p>
+<hr />
+<h3><strong>Esercizio 3: Maggiore e Minore tra Due Numeri</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> confronto numerico, <code>if/else</code>, output multiplo</p>
+<p><strong>Scenario:</strong><br />
+Realizza una form in <code>confronto_numeri.php</code> che invia i dati a <code>risultato_confronto.php</code>, dove vengono mostrati maggiore e minore.</p>
+<p><strong>Consegna:</strong><br />
+1. Crea in <code>confronto_numeri.php</code> una form con due campi numerici (<code>n1</code>, <code>n2</code>) e pulsante <code>Confronta</code>.<br />
+2. Imposta <code>action="risultato_confronto.php"</code> e metodo <code>POST</code>.<br />
+3. In <code>risultato_confronto.php</code>, confronta i due valori e mostra:<br />
+   - numero maggiore<br />
+   - numero minore<br />
+4. Se i due numeri sono uguali, mostra un messaggio specifico (<code>I numeri sono uguali</code>).<br />
+5. Presenta i risultati nella pagina risultato in modo leggibile.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio Semplice 3 - Maggiore e Minore" src="../img/form-render/semplice-3-maggiore-minore.svg" /></p>
+<hr />
+<h2>🎯 Esercizi su Form HTML + Backend PHP</h2>
+<h3><strong>Esercizio 4: Form di Registrazione Utente</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> form HTML, <code>POST</code>, validazione server-side, output condizionale</p>
+<p><strong>Scenario:</strong><br />
+Realizza una form in <code>registrazione.php</code> che invia i dati a <code>risultato_registrazione.php</code>, dove avvengono validazione e riepilogo.</p>
+<p><strong>Campi richiesti:</strong><br />
+1. Nome (text)<br />
+2. Cognome (text)<br />
+3. Email (email)<br />
+4. Password (password)<br />
+5. Conferma password (password)<br />
+6. Data di nascita (date)<br />
+7. Checkbox accettazione termini</p>
+<p><strong>Consegna:</strong><br />
+1. Crea in <code>registrazione.php</code> la form con metodo <code>POST</code>, pulsante <code>Registrati</code> e <code>action="risultato_registrazione.php"</code>.<br />
+2. In <code>risultato_registrazione.php</code>, valida in PHP che:<br />
+   - tutti i campi testuali siano compilati;<br />
+   - email contenga un formato valido;<br />
+   - password sia lunga almeno 8 caratteri;<br />
+   - password e conferma password coincidano;<br />
+   - checkbox dei termini sia selezionata.<br />
+3. Se ci sono errori, mostra un elenco di errori in alto nella pagina risultato.<br />
+4. Se non ci sono errori, mostra un riepilogo dei dati inseriti (senza stampare la password in chiaro).<br />
+5. Aggiungi nella pagina risultato un link <code>Torna alla registrazione</code> verso <code>registrazione.php</code>.</p>
+<p><strong>Vincoli didattici:</strong><br />
+- Non usare librerie esterne.<br />
+- Non usare sessioni in questo esercizio.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 4 - Registrazione" src="../img/form-render/esercizio-4-registrazione.svg" /></p>
+<hr />
+<h3><strong>Esercizio 5: Form di Login con Postback</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> autenticazione base, confronto credenziali, postback su stessa pagina</p>
+<p><strong>Scenario:</strong><br />
+Realizza una form in <code>login.php</code> che invia i dati a <code>risultato_login.php</code>, dove viene effettuato il controllo credenziali su dati hardcoded.</p>
+<p><strong>Credenziali di test (hardcoded):</strong><br />
+- Username: <code>studente</code><br />
+- Password: <code>php12345</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea in <code>login.php</code> una form con campi <code>username</code> e <code>password</code>, metodo <code>POST</code>, pulsante <code>Accedi</code> e <code>action="risultato_login.php"</code>.<br />
+2. In <code>risultato_login.php</code>, confronta i dati inseriti con le credenziali hardcoded.<br />
+3. Se username/password sono errati, mostra un messaggio di errore evidente.<br />
+4. Se le credenziali sono corrette, mostra un messaggio di login riuscito con il nome utente.<br />
+5. Inserisci nella pagina risultato un link <code>Torna al login</code> verso <code>login.php</code>.<br />
+6. Aggiungi un contatore tentativi usando una variabile <code>$_SESSION</code> (facoltativo bonus).</p>
+<p><strong>Vincoli didattici:</strong><br />
+- Niente database.<br />
+- Risultato visualizzato su pagina separata (<code>risultato_login.php</code>).</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 5 - Login" src="../img/form-render/esercizio-5-login.svg" /></p>
+<hr />
+<h3><strong>Esercizio 6: Form di Ricerca con Risultato su Altra Pagina</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> form <code>GET</code>, passaggio parametri in URL, separazione pagina input/risultato</p>
+<p><strong>Scenario:</strong><br />
+Implementa una ricerca di libri su un elenco predefinito.</p>
+<p><strong>File richiesti:</strong><br />
+- <code>ricerca_libri.php</code> (pagina con form)<br />
+- <code>risultato_ricerca.php</code> (pagina che elabora e mostra risultati)</p>
+<p><strong>Dataset minimo (array in PHP):</strong><br />
+Almeno 8 libri, ciascuno con:<br />
+- titolo<br />
+- autore<br />
+- genere</p>
+<p><strong>Consegna:</strong><br />
+1. In <code>ricerca_libri.php</code>, crea una form con:<br />
+   - input testuale <code>q</code> (parola da cercare)<br />
+   - select <code>campo</code> con opzioni: titolo, autore, genere<br />
+   - submit <code>Cerca</code><br />
+2. Invia i dati con metodo <code>GET</code> a <code>risultato_ricerca.php</code>.<br />
+3. In <code>risultato_ricerca.php</code>:<br />
+   - recupera <code>q</code> e <code>campo</code>;<br />
+   - cerca in modo case-insensitive nel dataset;<br />
+   - mostra lista dei risultati trovati.<br />
+4. Se non ci sono risultati, mostra messaggio: <code>Nessun risultato trovato</code>.<br />
+5. In fondo alla pagina risultato, inserisci link <code>Nuova ricerca</code> che torna a <code>ricerca_libri.php</code>.</p>
+<p><strong>Vincoli didattici:</strong><br />
+- Nessun uso di database.<br />
+- Nessun uso di AJAX.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 6 - Ricerca Libri" src="../img/form-render/esercizio-6-ricerca-libri.svg" /></p>
+<hr />
+<h3><strong>Esercizio 7: Form di Ricerca con Risultato nella Stessa Pagina (senza AJAX)</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> postback/refresh classico, rendering condizionale nello stesso file</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>ricerca_prodotti.php</code> che contiene sia form sia risultati.</p>
+<p><strong>Dataset minimo (array in PHP):</strong><br />
+Almeno 10 prodotti, ciascuno con:<br />
+- nome<br />
+- categoria<br />
+- prezzo</p>
+<p><strong>Consegna:</strong><br />
+1. Crea la form nella stessa pagina con:<br />
+   - input <code>keyword</code><br />
+   - select <code>categoria</code> con opzione <code>Tutte</code> + categorie presenti<br />
+   - submit <code>Filtra</code><br />
+2. Usa metodo <code>GET</code> (oppure <code>POST</code>, a scelta) verso la stessa pagina.<br />
+3. Quando la pagina viene inviata:<br />
+   - filtra i prodotti per parola chiave nel nome;<br />
+   - applica il filtro categoria se diversa da <code>Tutte</code>;<br />
+   - mostra i risultati sotto la form, nella stessa pagina.<br />
+4. Visualizza il numero totale di risultati trovati.<br />
+5. Se nessun prodotto soddisfa i filtri, mostra un messaggio dedicato.<br />
+6. Mantieni i valori selezionati nella form dopo l'invio.</p>
+<p><strong>Vincoli didattici:</strong><br />
+- Nessuna chiamata AJAX.<br />
+- Nessun cambio pagina per mostrare i risultati.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 7 - Ricerca Prodotti" src="../img/form-render/esercizio-7-ricerca-prodotti.svg" /></p>
+<hr />
+<h2>✅ Criteri di Valutazione (rubrica sintetica)</h2>
+<ul>
+<li>Correttezza della struttura HTML della form</li>
+<li>Uso corretto di <code>GET</code>/<code>POST</code> in base alla consegna</li>
+<li>Validazione lato server in PHP</li>
+<li>Gestione chiara di errori e casi vuoti</li>
+<li>Chiarezza del codice (nomi variabili, indentazione, leggibilità)</li>
+</ul>
+<hr />
+<h2>💡 Estensioni facoltative (per studenti più veloci)</h2>
+<ul>
+<li>Aggiungere stile CSS coerente e riutilizzabile.</li>
+<li>Aggiungere controlli extra (lunghezza minima keyword, email già usata simulata con array, ecc.).</li>
+<li>Ordinare i risultati di ricerca alfabeticamente prima della stampa.</li>
+</ul>
+</body>
+</html>

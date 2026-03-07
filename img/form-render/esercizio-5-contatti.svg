@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="860" viewBox="0 0 980 860" role="img" aria-labelledby="title desc">
+  <title id="title">Rendering esercizio 5 - Form Contatti Accessibile</title>
+  <desc id="desc">Mockup completo della form contatti con campi obbligatori e facoltativi.</desc>
+  <rect width="980" height="860" fill="#f4f7fc"/>
+  <rect x="120" y="40" width="740" height="780" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="155" y="92" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2937">Form Contatti</text>
+  <text x="155" y="122" font-family="Arial, sans-serif" font-size="15" fill="#6b7280">I campi con * sono obbligatori</text>
+
+  <g font-family="Arial, sans-serif" font-size="15" fill="#111827">
+    <text x="155" y="168">Nome *</text>
+    <rect x="155" y="178" width="330" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+    <text x="525" y="168">Cognome *</text>
+    <rect x="525" y="178" width="300" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+    <text x="155" y="250">Email *</text>
+    <rect x="155" y="260" width="670" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+    <text x="155" y="332">Telefono</text>
+    <rect x="155" y="342" width="320" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+    <text x="490" y="367" font-size="13" fill="#6b7280">Formato: +39 3331234567 (esempio)</text>
+
+    <text x="155" y="414">Oggetto *</text>
+    <rect x="155" y="424" width="670" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+    <text x="155" y="496">Messaggio * (minimo 20 caratteri)</text>
+    <rect x="155" y="508" width="670" height="170" rx="6" fill="#fff" stroke="#9ca3af"/>
+  </g>
+
+  <rect x="155" y="700" width="20" height="20" rx="3" fill="#fff" stroke="#6b7280"/>
+  <text x="186" y="716" font-family="Arial, sans-serif" font-size="15" fill="#111827">Desidero ricevere una copia del messaggio</text>
+
+  <rect x="155" y="748" width="150" height="42" rx="8" fill="#2563eb"/>
+  <text x="208" y="774" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fff">Invia</text>
+
+  <text x="325" y="774" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">I campi contrassegnati con * sono obbligatori</text>
+</svg>

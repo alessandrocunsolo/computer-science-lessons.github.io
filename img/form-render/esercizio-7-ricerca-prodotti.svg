@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="760" viewBox="0 0 920 760" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 7 - Ricerca prodotti nella stessa pagina</title>
+  <desc id="desc">Mockup singola pagina con form in alto e risultati sotto.</desc>
+  <rect width="920" height="760" fill="#f5f8fc"/>
+
+  <rect x="90" y="35" width="740" height="690" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="120" y="75" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#1f2937">ricerca_prodotti.php</text>
+  <text x="120" y="100" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Form + risultati nella stessa pagina</text>
+
+  <rect x="120" y="125" width="680" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="140" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#334155">Filtri ricerca</text>
+  <text x="140" y="185" font-family="Arial, sans-serif" font-size="13" fill="#111827">Keyword</text>
+  <rect x="140" y="194" width="300" height="36" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="470" y="185" font-family="Arial, sans-serif" font-size="13" fill="#111827">Categoria</text>
+  <rect x="470" y="194" width="210" height="36" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="487" y="217" font-family="Arial, sans-serif" font-size="13" fill="#374151">Tutte / Hardware / Office</text>
+  <rect x="140" y="250" width="120" height="34" rx="8" fill="#2563eb"/>
+  <text x="179" y="272" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Filtra</text>
+
+  <rect x="120" y="325" width="680" height="360" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="140" y="355" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#334155">Risultati trovati: 4</text>
+
+  <rect x="140" y="380" width="640" height="55" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="155" y="414" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Mouse Wireless | Categoria: Hardware | Prezzo: 24,90 €</text>
+
+  <rect x="140" y="445" width="640" height="55" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="155" y="479" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Tastiera Meccanica | Categoria: Hardware | Prezzo: 69,00 €</text>
+
+  <rect x="140" y="510" width="640" height="55" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="155" y="544" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Sedia Ergonomica | Categoria: Office | Prezzo: 149,00 €</text>
+
+  <text x="140" y="600" font-family="Arial, sans-serif" font-size="13" fill="#64748b">Se non ci sono risultati mostrare: Nessun prodotto soddisfa i filtri</text>
+</svg>

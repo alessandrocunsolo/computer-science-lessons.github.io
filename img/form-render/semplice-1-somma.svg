@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="640" viewBox="0 0 980 640" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 1 - Somma con pagina risultato separata</title>
+  <desc id="desc">Mockup con due riquadri: pagina form e pagina risultato.</desc>
+  <rect width="980" height="640" fill="#f4f7fc"/>
+
+  <rect x="40" y="40" width="430" height="560" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+  <text x="65" y="82" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">somma.php</text>
+  <text x="65" y="108" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Form di input</text>
+
+  <text x="65" y="155" font-family="Arial, sans-serif" font-size="14" fill="#111827">Numero 1</text>
+  <rect x="65" y="166" width="380" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="65" y="235" font-family="Arial, sans-serif" font-size="14" fill="#111827">Numero 2</text>
+  <rect x="65" y="246" width="380" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <rect x="65" y="315" width="170" height="40" rx="8" fill="#2563eb"/>
+  <text x="122" y="340" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#fff">Calcola</text>
+
+  <text x="485" y="315" font-family="Arial, sans-serif" font-size="28" fill="#64748b">→</text>
+
+  <rect x="510" y="40" width="430" height="560" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+  <text x="535" y="82" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">risultato_somma.php</text>
+  <text x="535" y="108" font-family="Arial, sans-serif" font-size="14" fill="#6b7280">Pagina risultato</text>
+  <rect x="535" y="160" width="380" height="130" rx="8" fill="#eef6ff" stroke="#93c5fd"/>
+  <text x="560" y="205" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">La somma di 12 e 8 è: 20</text>
+  <rect x="535" y="320" width="210" height="38" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="575" y="344" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#374151">Torna alla form</text>
+</svg>

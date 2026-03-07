@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esercizi-form-html</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Esercizi: Form HTML (solo Front-end)</h1>
+<h2>📚 Riepilogo: tag HTML da utilizzare</h2>
+<p>Di seguito trovi i principali tag da usare negli esercizi della scheda:</p>
+<h3>Struttura base della pagina</h3>
+<ul>
+<li><code>&lt;form&gt;</code>: contenitore principale del modulo.</li>
+<li><code>&lt;fieldset&gt;</code>: raggruppa campi correlati.</li>
+<li><code>&lt;legend&gt;</code>: titolo del gruppo di campi dentro <code>fieldset</code>.</li>
+</ul>
+<h3>Etichette e campi di input</h3>
+<ul>
+<li><code>&lt;label&gt;</code>: etichetta descrittiva collegata al campo tramite attributo <code>for</code>.</li>
+<li><code>&lt;input type="text"&gt;</code>: inserimento di testo breve (nome, cognome, oggetto).</li>
+<li><code>&lt;input type="email"&gt;</code>: email con validazione nativa del formato.</li>
+<li><code>&lt;input type="password"&gt;</code>: inserimento password non visibile.</li>
+<li><code>&lt;input type="date"&gt;</code>: selezione data.</li>
+<li><code>&lt;input type="time"&gt;</code>: selezione ora.</li>
+<li><code>&lt;input type="number"&gt;</code>: valori numerici con <code>min</code> e <code>max</code>.</li>
+<li><code>&lt;input type="tel"&gt;</code>: numero telefonico (eventualmente con <code>pattern</code>).</li>
+<li><code>&lt;input type="radio"&gt;</code>: scelta singola tra opzioni alternative.</li>
+<li><code>&lt;input type="checkbox"&gt;</code>: scelta multipla o conferma (es. privacy).</li>
+<li><code>&lt;input type="range"&gt;</code>: selezione di un valore in un intervallo.</li>
+</ul>
+<h3>Selezioni e testo esteso</h3>
+<ul>
+<li><code>&lt;select&gt;</code>: menu a tendina.</li>
+<li><code>&lt;option&gt;</code>: singola voce all'interno di <code>select</code>.</li>
+<li><code>&lt;textarea&gt;</code>: campo di testo multilinea (note, commenti, messaggi).</li>
+</ul>
+<h3>Azioni e supporto informativo</h3>
+<ul>
+<li><code>&lt;button type="submit"&gt;</code> oppure <code>&lt;input type="submit"&gt;</code>: invio della form.</li>
+<li><code>&lt;button type="reset"&gt;</code> oppure <code>&lt;input type="reset"&gt;</code>: ripristino dei campi.</li>
+<li><code>&lt;small&gt;</code>: note informative aggiuntive.</li>
+</ul>
+<h3>Attributi HTML utili per la validazione nativa</h3>
+<ul>
+<li><code>required</code>: rende il campo obbligatorio.</li>
+<li><code>minlength</code> e <code>maxlength</code>: impongono lunghezza minima/massima del testo.</li>
+<li><code>min</code> e <code>max</code>: limitano intervalli numerici o date/valori compatibili.</li>
+<li><code>pattern</code>: definisce un formato tramite espressione regolare.</li>
+<li><code>placeholder</code>: suggerisce un esempio di compilazione (non sostituisce la label).</li>
+</ul>
+<h2>Obiettivi della Scheda</h2>
+<ul>
+<li>Progettare moduli HTML semanticamente corretti</li>
+<li>Usare i principali campi input (<code>text</code>, <code>email</code>, <code>password</code>, <code>date</code>, <code>number</code>, <code>radio</code>, <code>checkbox</code>)</li>
+<li>Applicare validazione base nativa HTML (<code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>min</code>, <code>max</code>, <code>pattern</code>)</li>
+<li>Organizzare form con <code>label</code>, <code>fieldset</code>, <code>legend</code> e pulsanti di invio/reset</li>
+<li>Migliorare usabilità e accessibilità senza usare backend</li>
+</ul>
+<hr />
+<h2>📌 Regole generali</h2>
+<ul>
+<li>Non usare PHP, JavaScript o database.</li>
+<li>Ogni esercizio deve essere svolto in un file <code>.html</code> dedicato.</li>
+<li>Usa sempre:</li>
+<li><code>&lt;!DOCTYPE html&gt;</code></li>
+<li><code>&lt;html lang="it"&gt;</code></li>
+<li><code>&lt;meta charset="UTF-8"&gt;</code></li>
+<li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></li>
+<li>Collega ogni <code>label</code> al relativo input con l'attributo <code>for</code>.</li>
+<li>Inserisci un pulsante finale <code>Invia</code> (e, dove richiesto, <code>Reset</code>).</li>
+</ul>
+<hr />
+<h2>🎯 Esercizi Pratici</h2>
+<h3><strong>Esercizio 1: Iscrizione Newsletter</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Argomenti:</strong> <code>form</code>, <code>label</code>, <code>input text/email</code>, <code>required</code>, <code>checkbox</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea una pagina <code>newsletter.html</code> con titolo <code>Iscrizione Newsletter</code>.<br />
+2. Inserisci una form con i campi:<br />
+   - Nome e Cognome (<code>text</code>, obbligatorio)<br />
+   - Email (<code>email</code>, obbligatorio)<br />
+3. Aggiungi checkbox obbligatoria: <code>Accetto l'informativa privacy</code>.<br />
+4. Inserisci pulsanti <code>Invia</code> e <code>Reset</code>.<br />
+5. Sotto la form, aggiungi una breve nota informativa con tag <code>&lt;small&gt;</code>.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 1 - Iscrizione Newsletter" src="../img/form-render/esercizio-1-newsletter.svg" /></p>
+<hr />
+<h3><strong>Esercizio 2: Registrazione Utente (solo HTML)</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> <code>password</code>, <code>date</code>, <code>minlength</code>, <code>maxlength</code>, validazione nativa</p>
+<p><strong>Consegna:</strong><br />
+1. Crea <code>registrazione-html.html</code>.<br />
+2. Inserisci i campi:<br />
+   - Username (<code>text</code>, obbligatorio, <code>minlength="4"</code>, <code>maxlength="20"</code>)<br />
+   - Email (<code>email</code>, obbligatorio)<br />
+   - Password (<code>password</code>, obbligatorio, <code>minlength="8"</code>)<br />
+   - Conferma password (<code>password</code>, obbligatorio)<br />
+   - Data di nascita (<code>date</code>, obbligatorio)<br />
+3. Aggiungi una select <code>Classe</code> con almeno 4 opzioni (es. 1A, 2A, 3A, 4A).<br />
+4. Inserisci pulsante <code>Crea account</code>.<br />
+5. Non implementare controlli con JavaScript: solo attributi HTML.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 2 - Registrazione Utente" src="../img/form-render/esercizio-2-registrazione.svg" /></p>
+<hr />
+<h3><strong>Esercizio 3: Prenotazione Aula Informatica</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Argomenti:</strong> <code>number</code>, <code>time</code>, <code>date</code>, <code>select</code>, <code>textarea</code>, vincoli <code>min/max</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea <code>prenotazione-aula.html</code>.<br />
+2. Inserisci nella form:<br />
+   - Nome docente (<code>text</code>, obbligatorio)<br />
+   - Data prenotazione (<code>date</code>, obbligatorio)<br />
+   - Ora inizio (<code>time</code>, obbligatorio)<br />
+   - Ora fine (<code>time</code>, obbligatorio)<br />
+   - Numero studenti (<code>number</code>, <code>min="1"</code>, <code>max="30"</code>, obbligatorio)<br />
+   - Laboratorio (<code>select</code> con almeno 3 opzioni)<br />
+   - Note (<code>textarea</code>, facoltativo, <code>maxlength="300"</code>)<br />
+3. Inserisci pulsante <code>Prenota aula</code>.<br />
+4. Raggruppa i campi in sezioni usando <code>fieldset</code> e <code>legend</code>.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 3 - Prenotazione Aula Informatica" src="../img/form-render/esercizio-3-prenotazione.svg" /></p>
+<hr />
+<h3><strong>Esercizio 4: Sondaggio sulle Tecnologie Web</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> <code>radio</code>, <code>checkbox</code>, gruppi di scelta, struttura semantica</p>
+<p><strong>Consegna:</strong><br />
+1. Crea <code>sondaggio-web.html</code> con titolo <code>Sondaggio Tecnologie Web</code>.<br />
+2. Inserisci una domanda a scelta singola (radio):<br />
+   - <code>Quale linguaggio preferisci?</code> con opzioni: HTML, CSS, JavaScript, PHP.<br />
+3. Inserisci una domanda a scelta multipla (checkbox):<br />
+   - <code>Quali strumenti usi?</code> con almeno 5 opzioni (VS Code, Git, Figma, XAMPP, Browser DevTools, ecc.).<br />
+4. Inserisci un campo <code>range</code> (1-10) per il livello di interesse verso il web development.<br />
+5. Aggiungi <code>textarea</code> finale per commenti.<br />
+6. Inserisci pulsanti <code>Invia sondaggio</code> e <code>Reset</code>.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 4 - Sondaggio Tecnologie Web" src="../img/form-render/esercizio-4-sondaggio.svg" /></p>
+<hr />
+<h3><strong>Esercizio 5: Form Contatti Completa e Accessibile</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Argomenti:</strong> accessibilità base, ordine logico tabulazione, <code>pattern</code>, campi obbligatori/facoltativi</p>
+<p><strong>Consegna:</strong><br />
+1. Crea <code>contatti-accessibile.html</code>.<br />
+2. Progetta una form contatti con i campi:<br />
+   - Nome (<code>text</code>, obbligatorio)<br />
+   - Cognome (<code>text</code>, obbligatorio)<br />
+   - Email (<code>email</code>, obbligatorio)<br />
+   - Telefono (<code>tel</code>, facoltativo, con <code>pattern</code> per sole cifre e simbolo <code>+</code> opzionale)<br />
+   - Oggetto (<code>text</code>, obbligatorio)<br />
+   - Messaggio (<code>textarea</code>, obbligatorio, <code>minlength="20"</code>)<br />
+3. Inserisci checkbox: <code>Desidero ricevere una copia del messaggio</code>.<br />
+4. Associa correttamente tutte le etichette e usa placeholder solo come aiuto, non come sostituto della label.<br />
+5. Inserisci un blocco finale <code>&lt;small&gt;</code> con testo: <code>I campi contrassegnati con * sono obbligatori</code>.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 5 - Form Contatti Accessibile" src="../img/form-render/esercizio-5-contatti.svg" /></p>
+<hr />
+<h2>✅ Criteri di valutazione</h2>
+<ul>
+<li>Struttura HTML valida e ordinata</li>
+<li>Corretto uso dei tipi di input</li>
+<li>Presenza dei vincoli nativi HTML richiesti</li>
+<li>Chiarezza visiva e semantica della form</li>
+<li>Rispetto della consegna senza uso di backend o JavaScript</li>
+</ul>
+</body>
+</html>

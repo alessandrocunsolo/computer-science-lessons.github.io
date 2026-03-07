@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="820" viewBox="0 0 980 820" role="img" aria-labelledby="title desc">
+  <title id="title">Rendering esercizio 3 - Prenotazione Aula Informatica</title>
+  <desc id="desc">Mockup con fieldset dati prenotazione e dettagli aula.</desc>
+  <rect width="980" height="820" fill="#f4f7fb"/>
+  <rect x="90" y="35" width="800" height="740" rx="12" fill="#fff" stroke="#cfd8e3"/>
+  <text x="125" y="85" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2937">Prenotazione Aula Informatica</text>
+
+  <rect x="125" y="120" width="730" height="280" rx="8" fill="#fff" stroke="#9ca3af"/>
+  <rect x="145" y="106" width="160" height="24" fill="#fff"/>
+  <text x="150" y="123" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#374151">Dati prenotazione</text>
+
+  <text x="150" y="170" font-family="Arial, sans-serif" font-size="15" fill="#111827">Nome docente *</text>
+  <rect x="150" y="180" width="680" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <text x="150" y="250" font-family="Arial, sans-serif" font-size="15" fill="#111827">Data *</text>
+  <rect x="150" y="260" width="210" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <text x="385" y="250" font-family="Arial, sans-serif" font-size="15" fill="#111827">Ora inizio *</text>
+  <rect x="385" y="260" width="210" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <text x="620" y="250" font-family="Arial, sans-serif" font-size="15" fill="#111827">Ora fine *</text>
+  <rect x="620" y="260" width="210" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <rect x="125" y="435" width="730" height="230" rx="8" fill="#fff" stroke="#9ca3af"/>
+  <rect x="145" y="421" width="145" height="24" fill="#fff"/>
+  <text x="150" y="438" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#374151">Dettagli aula</text>
+
+  <text x="150" y="485" font-family="Arial, sans-serif" font-size="15" fill="#111827">Numero studenti (1-30) *</text>
+  <rect x="150" y="495" width="250" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <text x="430" y="485" font-family="Arial, sans-serif" font-size="15" fill="#111827">Laboratorio *</text>
+  <rect x="430" y="495" width="400" height="40" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <polygon points="798,511 810,511 804,520" fill="#6b7280"/>
+
+  <text x="150" y="565" font-family="Arial, sans-serif" font-size="15" fill="#111827">Note (facoltativo)</text>
+  <rect x="150" y="575" width="680" height="70" rx="6" fill="#fff" stroke="#9ca3af"/>
+
+  <rect x="150" y="690" width="200" height="44" rx="8" fill="#2563eb"/>
+  <text x="201" y="717" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#fff">Prenota aula</text>
+</svg>
