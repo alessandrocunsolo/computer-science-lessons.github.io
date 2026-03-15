@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="700" viewBox="0 0 1060 700" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 8 - Sondaggio con pattern PRG (Post-Redirect-Get)</title>
+  <desc id="desc">Mockup con due schermate: form del sondaggio e pagina riepilogo, collegate dal pattern PRG.</desc>
+  <rect width="1060" height="700" fill="#f4f7fc"/>
+
+  <!-- PRG label centrale -->
+  <text x="440" y="26" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">Pattern PRG (Post-Redirect-Get)</text>
+
+  <!-- ========== PANNELLO SINISTRA: FORM ========== -->
+  <rect x="30" y="40" width="430" height="600" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+  <text x="58" y="80" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2937">sondaggio.php</text>
+  <rect x="240" y="62" width="110" height="22" rx="11" fill="#fae8ff"/>
+  <text x="253" y="77" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#7e22ce">schermata: form</text>
+  <text x="58" y="104" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">method="POST"  —  action="sondaggio.php"</text>
+
+  <!-- Q1 radio -->
+  <text x="58" y="136" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">1. Linguaggio preferito *</text>
+  <circle cx="72" cy="158" r="7" fill="#2563eb" stroke="#2563eb"/>
+  <circle cx="72" cy="158" r="3" fill="#fff"/>
+  <text x="84" y="163" font-family="Arial, sans-serif" font-size="12" fill="#374151">PHP</text>
+  <circle cx="130" cy="158" r="7" fill="#fff" stroke="#9ca3af"/>
+  <text x="142" y="163" font-family="Arial, sans-serif" font-size="12" fill="#374151">Python</text>
+  <circle cx="202" cy="158" r="7" fill="#fff" stroke="#9ca3af"/>
+  <text x="214" y="163" font-family="Arial, sans-serif" font-size="12" fill="#374151">JavaScript</text>
+  <circle cx="290" cy="158" r="7" fill="#fff" stroke="#9ca3af"/>
+  <text x="302" y="163" font-family="Arial, sans-serif" font-size="12" fill="#374151">Java</text>
+
+  <!-- Q2 select -->
+  <text x="58" y="198" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">2. Ore a settimana *</text>
+  <rect x="58" y="208" width="200" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="74" y="230" font-family="Arial, sans-serif" font-size="12" fill="#374151">5–10  ▾</text>
+
+  <!-- Q3 checkbox -->
+  <text x="58" y="264" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">3. Tipo di progetto *</text>
+  <rect x="58" y="274" width="14" height="14" rx="3" fill="#2563eb" stroke="#2563eb"/>
+  <text x="76" y="286" font-family="Arial, sans-serif" font-size="12" fill="#374151">Web</text>
+  <rect x="130" y="274" width="14" height="14" rx="3" fill="#2563eb" stroke="#2563eb"/>
+  <text x="148" y="286" font-family="Arial, sans-serif" font-size="12" fill="#374151">Mobile</text>
+  <rect x="218" y="274" width="14" height="14" rx="3" fill="#fff" stroke="#9ca3af"/>
+  <text x="236" y="286" font-family="Arial, sans-serif" font-size="12" fill="#374151">Data Science</text>
+  <rect x="338" y="274" width="14" height="14" rx="3" fill="#fff" stroke="#9ca3af"/>
+  <text x="356" y="286" font-family="Arial, sans-serif" font-size="12" fill="#374151">Giochi</text>
+
+  <!-- Q4 text -->
+  <text x="58" y="322" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">4. Descriviti in una parola</text>
+  <rect x="58" y="332" width="380" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="74" y="354" font-family="Arial, sans-serif" font-size="12" fill="#374151">divertente</text>
+
+  <!-- Invia button -->
+  <rect x="58" y="388" width="160" height="38" rx="8" fill="#7c3aed"/>
+  <text x="95" y="412" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#fff">Invia  →  POST</text>
+
+  <!-- Validation note -->
+  <rect x="58" y="446" width="380" height="50" rx="6" fill="#fff7ed" stroke="#fed7aa"/>
+  <text x="74" y="467" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#9a3412">Errori di validazione (se presenti):</text>
+  <text x="74" y="485" font-family="Arial, sans-serif" font-size="12" fill="#7c2d12">— Q1 obbligatoria   — Q3 obbligatoria</text>
+
+  <text x="58" y="545" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Se valido: salva in $_SESSION['sondaggio'] e redirect</text>
+
+  <!-- ========== FRECCE PRG ========== -->
+  <!-- POST arrow right -->
+  <line x1="462" y1="410" x2="540" y2="390" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,3"/>
+  <polygon points="538,383 548,390 538,397" fill="#7c3aed"/>
+  <text x="468" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#7c3aed">POST</text>
+
+  <!-- Redirect arrow down-right -->
+  <text x="462" y="440" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">header(</text>
+  <text x="462" y="456" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Location)</text>
+
+  <!-- GET arrow -->
+  <line x1="540" y1="430" x2="598" y2="430" stroke="#16a34a" stroke-width="2"/>
+  <polygon points="596,423 606,430 596,437" fill="#16a34a"/>
+  <text x="540" y="448" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#16a34a">GET</text>
+  <text x="532" y="464" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">?passo=riepilogo</text>
+
+  <!-- PRG box -->
+  <rect x="458" y="480" width="130" height="60" rx="8" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text x="473" y="506" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#6d28d9">POST → Redirect</text>
+  <text x="473" y="522" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#6d28d9">→ GET (PRG)</text>
+  <text x="473" y="536" font-family="Arial, sans-serif" font-size="9" fill="#7c3aed">evita re-invio al refresh</text>
+
+  <!-- ========== PANNELLO DESTRA: RIEPILOGO ========== -->
+  <rect x="600" y="40" width="430" height="600" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+  <text x="628" y="80" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1f2937">sondaggio.php</text>
+  <rect x="810" y="62" width="106" height="22" rx="11" fill="#dcfce7"/>
+  <text x="820" y="77" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#166534">passo=riepilogo</text>
+  <text x="628" y="104" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Navigazione GET — nessun form, solo visualizzazione</text>
+
+  <!-- Riepilogo box -->
+  <rect x="628" y="118" width="382" height="350" rx="8" fill="#ecfdf5" stroke="#86efac"/>
+  <text x="648" y="150" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#065f46">✅  Riepilogo risposte</text>
+
+  <text x="648" y="184" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#374151">Linguaggio preferito:</text>
+  <text x="648" y="204" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">PHP</text>
+
+  <text x="648" y="238" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#374151">Ore a settimana:</text>
+  <text x="648" y="258" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">5–10</text>
+
+  <text x="648" y="292" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#374151">Tipo di progetto:</text>
+  <text x="648" y="312" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Web, Mobile</text>
+
+  <text x="648" y="346" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#374151">La tua parola:</text>
+  <text x="648" y="366" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">divertente</text>
+
+  <text x="648" y="420" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Dati letti da $_SESSION['sondaggio']</text>
+  <text x="648" y="438" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Nessun form POST in questa pagina</text>
+
+  <!-- Ricomincia link -->
+  <rect x="628" y="488" width="180" height="36" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="660" y="511" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#374151">Ricomincia</text>
+  <text x="817" y="511" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">→ ?passo=reset</text>
+  <text x="628" y="545" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Svuota sessione e reindirizza al form</text>
+
+  <text x="628" y="600" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Refresh sicuro: GET non re-invia dati POST</text>
+</svg>

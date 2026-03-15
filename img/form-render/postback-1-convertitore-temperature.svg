@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="570" viewBox="0 0 820 570" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 1 - Convertitore di Temperature (Postback)</title>
+  <desc id="desc">Mockup singola pagina con form e risultato nella stessa pagina.</desc>
+  <rect width="820" height="570" fill="#f4f7fc"/>
+
+  <!-- Card principale -->
+  <rect x="50" y="30" width="720" height="510" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+
+  <!-- Header -->
+  <text x="80" y="72" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">convertitore_temperature.php</text>
+  <text x="80" y="96" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Form + risultato nella stessa pagina (Postback — POST)</text>
+  <rect x="572" y="55" width="88" height="22" rx="11" fill="#dbeafe"/>
+  <text x="587" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">POSTBACK</text>
+
+  <!-- Form panel -->
+  <rect x="80" y="116" width="660" height="185" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+
+  <!-- Temperatura -->
+  <text x="100" y="149" font-family="Arial, sans-serif" font-size="13" fill="#374151">Temperatura</text>
+  <rect x="100" y="157" width="165" height="36" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="116" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">25</text>
+
+  <!-- Da -->
+  <text x="290" y="149" font-family="Arial, sans-serif" font-size="13" fill="#374151">Da</text>
+  <rect x="290" y="157" width="170" height="36" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="306" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">Celsius ▾</text>
+
+  <!-- A -->
+  <text x="486" y="149" font-family="Arial, sans-serif" font-size="13" fill="#374151">A</text>
+  <rect x="486" y="157" width="170" height="36" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="502" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">Fahrenheit ▾</text>
+
+  <!-- Converti button -->
+  <rect x="100" y="215" width="135" height="36" rx="8" fill="#2563eb"/>
+  <text x="127" y="238" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Converti</text>
+
+  <!-- Nota unità uguali -->
+  <text x="100" y="277" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Se unità di partenza = unità di arrivo → messaggio: "Le unità sono uguali, nessuna conversione necessaria"</text>
+
+  <!-- Risultato panel -->
+  <rect x="80" y="321" width="660" height="90" rx="8" fill="#eef6ff" stroke="#93c5fd"/>
+  <text x="100" y="356" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1e40af">Risultato</text>
+  <text x="100" y="390" font-family="Arial, sans-serif" font-size="16" fill="#1f2937">25 °C  =  77,00 °F</text>
+
+  <!-- Footer note -->
+  <text x="80" y="453" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">↑ Il risultato appare nella stessa pagina dopo l'invio — i campi vengono ripopolati</text>
+  <text x="80" y="472" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">In caso di campo vuoto: messaggio di errore sopra la form</text>
+</svg>

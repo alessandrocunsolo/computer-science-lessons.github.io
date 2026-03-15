@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="720" viewBox="0 0 920 720" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 6 - Filtro Studenti con GET (Postback)</title>
+  <desc id="desc">Mockup singola pagina con form GET, tabella filtrata e mantenimento stato.</desc>
+  <rect width="920" height="720" fill="#f4f7fc"/>
+
+  <!-- Card principale -->
+  <rect x="40" y="30" width="840" height="660" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+
+  <!-- Header -->
+  <text x="70" y="72" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">studenti.php</text>
+  <text x="70" y="96" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Filtro studenti tramite GET — URL condivisibile</text>
+  <rect x="674" y="55" width="48" height="22" rx="11" fill="#dcfce7"/>
+  <text x="685" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#166534">GET</text>
+  <rect x="730" y="55" width="88" height="22" rx="11" fill="#dbeafe"/>
+  <text x="745" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">POSTBACK</text>
+
+  <!-- URL bar -->
+  <rect x="70" y="108" width="800" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="86" y="125" font-family="Arial, sans-serif" font-size="11" fill="#475569">studenti.php?cerca=luca&amp;classe=3A&amp;media=7-8</text>
+
+  <!-- Form filtri -->
+  <rect x="70" y="148" width="800" height="110" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="90" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">Cerca (nome / cognome)</text>
+  <rect x="90" y="188" width="240" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="106" y="210" font-family="Arial, sans-serif" font-size="13" fill="#374151">Luca</text>
+
+  <text x="350" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">Classe</text>
+  <rect x="350" y="188" width="150" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="366" y="210" font-family="Arial, sans-serif" font-size="13" fill="#374151">3A  ▾</text>
+
+  <text x="520" y="180" font-family="Arial, sans-serif" font-size="13" fill="#374151">Media voti</text>
+  <rect x="520" y="188" width="150" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="536" y="210" font-family="Arial, sans-serif" font-size="13" fill="#374151">7–8  ▾</text>
+
+  <rect x="690" y="188" width="110" height="34" rx="8" fill="#2563eb"/>
+  <text x="722" y="210" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Filtra</text>
+
+  <!-- Count and table -->
+  <text x="70" y="280" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Studenti trovati: 3</text>
+
+  <!-- Table header -->
+  <rect x="70" y="292" width="800" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="100" y="314" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Nome</text>
+  <text x="250" y="314" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Cognome</text>
+  <text x="450" y="314" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Classe</text>
+  <text x="620" y="314" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Media voti</text>
+
+  <!-- Table rows -->
+  <rect x="70" y="326" width="800" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="100" y="349" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Luca</text>
+  <text x="250" y="349" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Bianchi</text>
+  <text x="450" y="349" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">3A</text>
+  <text x="620" y="349" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">7.8</text>
+
+  <rect x="70" y="362" width="800" height="36" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="100" y="385" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Luca</text>
+  <text x="250" y="385" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Ferretti</text>
+  <text x="450" y="385" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">3A</text>
+  <text x="620" y="385" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">7.3</text>
+
+  <rect x="70" y="398" width="800" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="100" y="421" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Luca</text>
+  <text x="250" y="421" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Mancini</text>
+  <text x="450" y="421" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">3A</text>
+  <text x="620" y="421" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">7.5</text>
+
+  <!-- Empty state -->
+  <rect x="70" y="454" width="800" height="40" rx="6" fill="#fef9c3" stroke="#fde047"/>
+  <text x="90" y="479" font-family="Arial, sans-serif" font-size="13" fill="#713f12">Se nessuno studente corrisponde → "Nessuno studente trovato"</text>
+
+  <!-- GET note -->
+  <rect x="70" y="516" width="800" height="50" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="90" y="539" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#166534">Perché GET?</text>
+  <text x="90" y="557" font-family="Arial, sans-serif" font-size="12" fill="#166534">I filtri di ricerca sono adatti a GET: l'URL risultante è condivisibile e salvabile come preferito dal browser.</text>
+
+  <!-- State note -->
+  <text x="70" y="622" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">I campi della form mantengono i valori selezionati dopo l'invio (ripopolamento con $_GET)</text>
+</svg>

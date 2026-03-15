@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="740" viewBox="0 0 920 740" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 7 - Paginazione con GET (Postback)</title>
+  <desc id="desc">Mockup con catalogo prodotti paginato tramite parametri GET e filtro categoria.</desc>
+  <rect width="920" height="740" fill="#f4f7fc"/>
+
+  <!-- Card principale -->
+  <rect x="40" y="30" width="840" height="680" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+
+  <!-- Header -->
+  <text x="70" y="72" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">catalogo.php</text>
+  <text x="70" y="96" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Catalogo prodotti con paginazione tramite parametri GET</text>
+  <rect x="678" y="55" width="48" height="22" rx="11" fill="#dcfce7"/>
+  <text x="689" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#166534">GET</text>
+  <rect x="734" y="55" width="88" height="22" rx="11" fill="#dbeafe"/>
+  <text x="749" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">POSTBACK</text>
+
+  <!-- URL bar -->
+  <rect x="70" y="108" width="800" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="86" y="125" font-family="Arial, sans-serif" font-size="11" fill="#475569">catalogo.php?pagina=2&amp;categoria=Hardware</text>
+
+  <!-- Filtro categoria form (GET) -->
+  <rect x="70" y="148" width="800" height="76" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="90" y="178" font-family="Arial, sans-serif" font-size="13" fill="#374151">Categoria</text>
+  <rect x="90" y="186" width="220" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="106" y="208" font-family="Arial, sans-serif" font-size="13" fill="#374151">Hardware  ▾</text>
+  <rect x="326" y="186" width="100" height="34" rx="8" fill="#2563eb"/>
+  <text x="355" y="208" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Filtra</text>
+  <text x="450" y="208" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Al cambio filtro la paginazione riparte da pagina 1</text>
+
+  <!-- Tabella prodotti -->
+  <!-- Header -->
+  <rect x="70" y="242" width="800" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="100" y="264" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Nome prodotto</text>
+  <text x="420" y="264" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Categoria</text>
+  <text x="660" y="264" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Prezzo</text>
+
+  <!-- Rows (5 per page) -->
+  <rect x="70" y="276" width="800" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="100" y="299" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Tastiera Meccanica</text>
+  <text x="420" y="299" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hardware</text>
+  <text x="660" y="299" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">69,00 €</text>
+
+  <rect x="70" y="312" width="800" height="36" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="100" y="335" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Monitor 24"</text>
+  <text x="420" y="335" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hardware</text>
+  <text x="660" y="335" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">189,00 €</text>
+
+  <rect x="70" y="348" width="800" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="100" y="371" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Mouse Wireless</text>
+  <text x="420" y="371" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hardware</text>
+  <text x="660" y="371" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">24,90 €</text>
+
+  <rect x="70" y="384" width="800" height="36" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="100" y="407" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Webcam HD</text>
+  <text x="420" y="407" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hardware</text>
+  <text x="660" y="407" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">49,00 €</text>
+
+  <rect x="70" y="420" width="800" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="100" y="443" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hub USB-C</text>
+  <text x="420" y="443" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Hardware</text>
+  <text x="660" y="443" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">35,00 €</text>
+
+  <!-- Pagination info -->
+  <text x="70" y="480" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">5 prodotti per pagina  —  Categoria: Hardware  —  20 prodotti totali</text>
+
+  <!-- Pagination controls -->
+  <rect x="70" y="498" width="800" height="56" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="90" y="514" width="130" height="32" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="110" y="535" font-family="Arial, sans-serif" font-size="13" fill="#374151">← Precedente</text>
+
+  <text x="370" y="530" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2937">Pagina 2 di 4</text>
+
+  <rect x="640" y="514" width="130" height="32" rx="8" fill="#2563eb"/>
+  <text x="663" y="535" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Successiva →</text>
+
+  <!-- Implementation note -->
+  <rect x="70" y="572" width="800" height="50" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="90" y="596" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#166534">Come funziona:</text>
+  <text x="90" y="612" font-family="Arial, sans-serif" font-size="12" fill="#166534">$pagina = $_GET['pagina'] ?? 1;  →  $prodotti = array_slice($tutti, ($pagina-1)*5, 5);</text>
+
+  <text x="70" y="660" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">I link Precedente/Successiva includono sia il parametro categoria sia il numero di pagina</text>
+</svg>

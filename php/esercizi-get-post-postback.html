@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esercizi-get-post-postback</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Esercizi: GET, POST e Postback in PHP</h1>
+<h2>Obiettivi della Scheda</h2>
+<ul>
+<li>Distinguere i casi d'uso del metodo <code>GET</code> da quelli del metodo <code>POST</code></li>
+<li>Implementare il pattern <strong>postback</strong>: form e risultato nella stessa pagina</li>
+<li>Mantenere i valori del form dopo l'invio (stato della form)</li>
+<li>Validare input lato server e mostrare errori inline</li>
+<li>Gestire la logica condizionale <code>isset</code>/<code>empty</code> per rilevare l'invio del form</li>
+</ul>
+<hr />
+<h2>📌 Indicazioni generali</h2>
+<ul>
+<li>Ogni esercizio richiede <strong>un solo file PHP</strong> (postback), salvo indicazione contraria.</li>
+<li>Usa sempre:</li>
+<li><code>&lt;!DOCTYPE html&gt;</code></li>
+<li><code>&lt;html lang="it"&gt;</code></li>
+<li><code>&lt;meta charset="UTF-8"&gt;</code></li>
+<li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></li>
+<li>Non usare database: usa variabili e array PHP.</li>
+<li>Non usare AJAX o JavaScript per la logica richiesta.</li>
+<li>Dopo ogni invio, <strong>ripopola i campi del form</strong> con i valori ricevuti.</li>
+<li>Inserisci messaggi chiari in italiano per errori e successi.</li>
+</ul>
+<hr />
+<h2>🔑 Concetti chiave da ricordare</h2>
+<h3>Differenza tra GET e POST</h3>
+<table>
+<thead>
+<tr>
+<th>Caratteristica</th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dati visibili nell'URL</td>
+<td>✅ Sì</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Adatto per ricerche/filtri</td>
+<td>✅ Sì</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Adatto per dati sensibili</td>
+<td>❌ No</td>
+<td>✅ Sì</td>
+</tr>
+<tr>
+<td>Risultato condivisibile via URL</td>
+<td>✅ Sì</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Modifiche di stato (es. salvataggio)</td>
+<td>❌ No</td>
+<td>✅ Sì</td>
+</tr>
+</tbody>
+</table>
+<h3>Pattern Postback (stessa pagina)</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$risultato</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="nv">$errori</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;REQUEST_METHOD&#39;</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;POST&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 1. Recupera i dati</span>
+    <span class="nv">$valore</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;campo&#39;</span><span class="p">]</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 2. Valida</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$valore</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$errori</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Il campo è obbligatorio.&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 3. Elabora solo se non ci sono errori</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$errori</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$risultato</span> <span class="o">=</span> <span class="cm">/* calcolo */</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+<span class="x">&lt;!-- HTML con form e risultato condizionale --&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>🎯 Esercizi con metodo POST e Postback</h2>
+<h3><strong>Esercizio 1: Convertitore di Temperature</strong></h3>
+<p><strong>Livello:</strong> ⭐ Principiante<br />
+<strong>Metodo:</strong> <code>POST</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> postback base, conversione numerica, output condizionale</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>convertitore_temperature.php</code> che converte una temperatura tra Celsius, Fahrenheit e Kelvin.</p>
+<p><strong>Consegna:</strong><br />
+1. In <code>convertitore_temperature.php</code>, crea una form <code>POST</code> che punta alla stessa pagina con:<br />
+   - campo numerico <code>temperatura</code><br />
+   - select <code>da</code> (unità di partenza: Celsius, Fahrenheit, Kelvin)<br />
+   - select <code>a</code> (unità di destinazione: Celsius, Fahrenheit, Kelvin)<br />
+   - pulsante <code>Converti</code><br />
+2. Quando il form viene inviato:<br />
+   - valida che il campo <code>temperatura</code> non sia vuoto;<br />
+   - esegui la conversione con le formule corrette;<br />
+   - mostra il risultato nella stessa pagina, sotto la form.<br />
+3. Se le unità di partenza e di arrivo sono uguali, mostra un messaggio: <code>Le unità sono uguali, nessuna conversione necessaria</code>.<br />
+4. Ripopola i campi con i valori inseriti dopo l'invio.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 1 - Convertitore di Temperature" src="../img/form-render/postback-1-convertitore-temperature.svg" /></p>
+<p><strong>Formule di riferimento:</strong><br />
+- °C → °F: <code>(C × 9/5) + 32</code><br />
+- °C → K: <code>C + 273.15</code><br />
+- °F → °C: <code>(F − 32) × 5/9</code><br />
+- °F → K: <code>(F − 32) × 5/9 + 273.15</code><br />
+- K → °C: <code>K − 273.15</code><br />
+- K → °F: <code>(K − 273.15) × 9/5 + 32</code></p>
+<hr />
+<h3><strong>Esercizio 2: Calcolatrice con Storico</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Metodo:</strong> <code>POST</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> postback, array in sessione, storico operazioni</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>calcolatrice.php</code> che esegue operazioni e mostra uno storico degli ultimi calcoli effettuati nella sessione.</p>
+<p><strong>Consegna:</strong><br />
+1. Avvia la sessione con <code>session_start()</code> in cima al file.<br />
+2. Crea una form <code>POST</code> con:<br />
+   - <code>numero1</code> (number)<br />
+   - <code>operatore</code> (select: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>)<br />
+   - <code>numero2</code> (number)<br />
+   - pulsante <code>Calcola</code><br />
+3. Quando il form viene inviato:<br />
+   - valida i campi;<br />
+   - gestisci la divisione per zero con messaggio dedicato;<br />
+   - salva ogni operazione riuscita in <code>$_SESSION['storico']</code> come stringa (es. <code>3 + 4 = 7</code>);<br />
+   - mostra il risultato dell'ultima operazione.<br />
+4. Mostra sotto la form lo storico di tutte le operazioni della sessione, dalla più recente all'ultima.<br />
+5. Aggiungi un link <code>Svuota storico</code> che reimposta la variabile di sessione tramite <code>GET</code> con parametro <code>azione=reset</code>.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 2 - Calcolatrice con Storico" src="../img/form-render/postback-2-calcolatrice-storico.svg" /></p>
+<hr />
+<h3><strong>Esercizio 3: Valutazione Password</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Metodo:</strong> <code>POST</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> validazione avanzata, feedback visuale, condizioni multiple</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>valuta_password.php</code> che analizza la forza di una password inserita dall'utente.</p>
+<p><strong>Criteri di valutazione:</strong><br />
+- 1 punto: lunghezza ≥ 8 caratteri<br />
+- 1 punto: contiene almeno una lettera maiuscola<br />
+- 1 punto: contiene almeno una cifra<br />
+- 1 punto: contiene almeno un carattere speciale (<code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, ecc.)</p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form <code>POST</code> con un campo <code>password</code> (type <code>text</code> per rendere visibile l'input) e pulsante <code>Analizza</code>.<br />
+2. Quando il form viene inviato:<br />
+   - calcola il punteggio in base ai criteri;<br />
+   - mostra il punteggio ottenuto su 4;<br />
+   - mostra per ogni criterio se è soddisfatto (✅) o no (❌);<br />
+   - assegna un giudizio: <code>Molto debole</code> (0–1), <code>Debole</code> (2), <code>Buona</code> (3), <code>Ottima</code> (4).<br />
+3. Non ripopolare il campo password dopo l'invio (per sicurezza).<br />
+4. Mostra un messaggio di validazione se il campo è vuoto.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 3 - Valutazione Password" src="../img/form-render/postback-3-valutazione-password.svg" /></p>
+<hr />
+<h3><strong>Esercizio 4: Generatore di Tabella Moltiplicazione</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Metodo:</strong> <code>POST</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> cicli, tabelle HTML, output condizionale</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>tabellina.php</code> che genera la tabella di moltiplicazione per un numero scelto dall'utente.</p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form <code>POST</code> con:<br />
+   - <code>numero</code> (number, min 1, max 20)<br />
+   - <code>fino_a</code> (number, min 1, max 20, default 10: il moltiplicatore massimo)<br />
+   - pulsante <code>Genera</code><br />
+2. Quando il form viene inviato:<br />
+   - valida che entrambi i campi siano compilati e nei range;<br />
+   - genera una tabella HTML con la tabellina: <code>numero × 1 = ...</code>, <code>numero × 2 = ...</code>, ecc.;<br />
+   - evidenzia in grassetto i risultati che sono multipli di 10.<br />
+3. Ripopola i campi con i valori inseriti dopo l'invio.<br />
+4. Se i campi non sono nel range, mostra un messaggio di errore adeguato.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 4 - Tabella di Moltiplicazione" src="../img/form-render/postback-4-tabellina.svg" /></p>
+<hr />
+<h3><strong>Esercizio 5: Modulo di Feedback</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Metodo:</strong> <code>POST</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> validazione form complessa, checkbox, radio, textarea</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>feedback.php</code> con un form di valutazione di un corso.</p>
+<p><strong>Campi richiesti:</strong><br />
+1. Nome (text, obbligatorio)<br />
+2. Valutazione generale (radio: 1–5 stelle, obbligatorio)<br />
+3. Aspetti positivi (checkbox multipla: <code>Chiarezza</code>, <code>Esempi pratici</code>, <code>Materiale didattico</code>, <code>Ritmo delle lezioni</code>)<br />
+4. Commento libero (textarea, facoltativo, max 300 caratteri)<br />
+5. Consenso alla pubblicazione del feedback (checkbox, obbligatorio)</p>
+<p><strong>Consegna:</strong><br />
+1. Crea la form <code>POST</code> verso la stessa pagina.<br />
+2. Quando il form viene inviato:<br />
+   - valida nome, valutazione e consenso (obbligatori);<br />
+   - controlla che il commento non superi i 300 caratteri;<br />
+   - se valido, mostra un riepilogo del feedback ricevuto nella stessa pagina.<br />
+3. In caso di errori, mostra l'elenco degli errori in cima alla pagina.<br />
+4. Mantieni i valori selezionati nella form dopo ogni invio (ripopolamento).</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 5 - Modulo di Feedback" src="../img/form-render/postback-5-feedback.svg" /></p>
+<hr />
+<h2>🎯 Esercizi con metodo GET e Postback</h2>
+<h3><strong>Esercizio 6: Filtro Studenti</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐ Intermedio<br />
+<strong>Metodo:</strong> <code>GET</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> <code>GET</code>, parametri URL, filtro array, mantenimento stato</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>studenti.php</code> che visualizza e filtra un elenco di studenti.</p>
+<p><strong>Dataset (array in PHP):</strong><br />
+Almeno 10 studenti, ciascuno con:<br />
+- nome<br />
+- cognome<br />
+- classe (es. <code>3A</code>, <code>3B</code>, <code>4A</code>)<br />
+- media voti (float)</p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form <code>GET</code> verso la stessa pagina con:<br />
+   - input testuale <code>cerca</code> (ricerca per nome o cognome)<br />
+   - select <code>classe</code> con opzione <code>Tutte</code> + classi disponibili<br />
+   - select <code>media</code> con opzioni: <code>Tutte</code>, <code>&lt; 6</code>, <code>6–7</code>, <code>7–8</code>, <code>&gt; 8</code><br />
+   - pulsante <code>Filtra</code><br />
+2. Filtra gli studenti in base ai parametri ricevuti via <code>GET</code>.<br />
+3. Mostra la tabella degli studenti filtrati.<br />
+4. Mostra il numero di studenti trovati sopra la tabella.<br />
+5. Mantieni i valori nei campi della form dopo l'invio.<br />
+6. Se nessuno studente corrisponde, mostra <code>Nessuno studente trovato</code>.</p>
+<p><strong>Perché GET?</strong> I filtri di ricerca sono adatti a <code>GET</code> perché l'URL risultante è condivisibile e il browser può salvarlo nei preferiti.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 6 - Filtro Studenti" src="../img/form-render/postback-6-filtro-studenti.svg" /></p>
+<hr />
+<h3><strong>Esercizio 7: Paginazione di una Lista</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Metodo:</strong> <code>GET</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> <code>GET</code>, paginazione, slice array, navigazione pagine</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>catalogo.php</code> che visualizza un catalogo di prodotti con paginazione tramite parametri <code>GET</code>.</p>
+<p><strong>Dataset (array in PHP):</strong><br />
+Almeno 20 prodotti, ciascuno con:<br />
+- nome<br />
+- categoria<br />
+- prezzo</p>
+<p><strong>Consegna:</strong><br />
+1. Definisci il numero di prodotti per pagina (es. 5).<br />
+2. Leggi il parametro <code>pagina</code> dalla query string (<code>$_GET['pagina']</code>), con default 1.<br />
+3. Calcola i prodotti da mostrare con <code>array_slice()</code>.<br />
+4. Mostra i prodotti della pagina corrente in una tabella.<br />
+5. Mostra la navigazione: link <code>← Precedente</code> e <code>Successiva →</code> dove applicabile.<br />
+6. Mostra indicazione della pagina corrente (es. <code>Pagina 2 di 4</code>).<br />
+7. Aggiunge una form <code>GET</code> con select per filtrare per categoria; il filtro deve coesistere con la paginazione (al cambio filtro, la pagina torna a 1).</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 7 - Paginazione" src="../img/form-render/postback-7-paginazione.svg" /></p>
+<hr />
+<h2>🎯 Esercizi Misti GET + POST</h2>
+<h3><strong>Esercizio 8: Sondaggio con Riepilogo</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Metodo:</strong> <code>POST</code> per invio, <code>GET</code> per navigazione<br />
+<strong>Argomenti:</strong> uso appropriato di <code>GET</code>/<code>POST</code>, sessioni, riepilogo</p>
+<p><strong>Scenario:</strong><br />
+Crea un sondaggio a domande multiple con riepilogo finale. Tutte le pagine sono incluse in <code>sondaggio.php</code>.</p>
+<p><strong>Domande del sondaggio (hardcoded):</strong><br />
+1. Qual è il tuo linguaggio di programmazione preferito? (radio: PHP, Python, JavaScript, Java)<br />
+2. Quante ore a settimana studi programmazione? (select: &lt; 2, 2–5, 5–10, &gt; 10)<br />
+3. Che tipo di progetto ti interessa di più? (checkbox: Web, Mobile, Data Science, Giochi)<br />
+4. Descrivi in una parola il tuo rapporto con il codice. (text)</p>
+<p><strong>Consegna:</strong><br />
+1. Avvia la sessione.<br />
+2. Il parametro <code>passo</code> (via <code>GET</code>) controlla quale schermata mostrare: <code>form</code>, <code>riepilogo</code>, <code>reset</code>.<br />
+3. Quando il form viene inviato con <code>POST</code>:<br />
+   - valida le risposte (tutte obbligatorie tranne il testo libero);<br />
+   - salva le risposte in <code>$_SESSION['sondaggio']</code>;<br />
+   - reindirizza a <code>sondaggio.php?passo=riepilogo</code> con <code>header('Location: ...')</code>.<br />
+4. Nella schermata <code>riepilogo</code>, mostra tutte le risposte in formato leggibile.<br />
+5. Aggiungi link <code>Ricomincia</code> che punta a <code>sondaggio.php?passo=reset</code>; questo svuota la sessione e reindirizza al form.</p>
+<p><strong>Perché questo schema?</strong> Dimostra il pattern <strong>PRG (Post-Redirect-Get)</strong>: con <code>POST</code> si inviano i dati, con <code>GET</code> si naviga tra le schermate. Questo evita la re-invio del form al refresh.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 8 - Sondaggio PRG" src="../img/form-render/postback-8-sondaggio.svg" /></p>
+<hr />
+<h3><strong>Esercizio 9: Ricerca con Filtri Avanzati</strong></h3>
+<p><strong>Livello:</strong> ⭐⭐⭐ Avanzato<br />
+<strong>Metodo:</strong> <code>GET</code> | <strong>Pagine:</strong> 1 (postback)<br />
+<strong>Argomenti:</strong> filtri multipli, URL condivisibile, ordinamento</p>
+<p><strong>Scenario:</strong><br />
+Crea una pagina unica <code>ricerca_film.php</code> con ricerca e filtri avanzati su un catalogo di film.</p>
+<p><strong>Dataset minimo (array in PHP):</strong><br />
+Almeno 12 film, ciascuno con:<br />
+- titolo<br />
+- regista<br />
+- anno (int)<br />
+- genere<br />
+- voto (float, 1–10)</p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form <code>GET</code> verso la stessa pagina con:<br />
+   - input <code>q</code> (ricerca testuale per titolo o regista)<br />
+   - select <code>genere</code> (opzione <code>Tutti</code> + generi presenti)<br />
+   - input <code>anno_da</code> e <code>anno_a</code> (range anni, entrambi facoltativi)<br />
+   - select <code>ordina</code> (opzioni: <code>Titolo A–Z</code>, <code>Anno ↑</code>, <code>Anno ↓</code>, <code>Voto ↓</code>)<br />
+   - pulsante <code>Cerca</code><br />
+2. Filtra e ordina i film in base ai parametri ricevuti.<br />
+3. Mostra i risultati in una tabella con tutte le colonne del dataset.<br />
+4. Mostra quanti film sono stati trovati.<br />
+5. Mantieni tutti i valori nei campi dopo l'invio.<br />
+6. Se nessun film corrisponde, mostra messaggio dedicato.<br />
+7. Aggiungi un link <code>Azzera filtri</code> che porta alla stessa pagina senza parametri GET.</p>
+<p><strong>Rendering atteso (esempio):</strong><br />
+<img alt="Rendering Esercizio 9 - Ricerca Film" src="../img/form-render/postback-9-ricerca-film.svg" /></p>
+<hr />
+<h2>✅ Criteri di Valutazione (rubrica sintetica)</h2>
+<ul>
+<li>Uso corretto di <code>GET</code> vs <code>POST</code> motivato dal tipo di operazione</li>
+<li>Implementazione corretta del postback (rilevamento invio, elaborazione, output)</li>
+<li>Ripopolamento della form dopo l'invio</li>
+<li>Validazione lato server con messaggi di errore chiari</li>
+<li>Chiarezza del codice (nomi variabili, indentazione, commenti in italiano)</li>
+</ul>
+<hr />
+<h2>💡 Estensioni facoltative (per studenti più veloci)</h2>
+<ul>
+<li>Applicare stile CSS coerente con la pagina di errore evidenziata in rosso e il successo in verde.</li>
+<li>Usare <code>htmlspecialchars()</code> su tutti i valori stampati a video per prevenire XSS.</li>
+<li>Aggiungere ordinamento ai risultati di ricerca prima della stampa.</li>
+<li>Implementare il pattern PRG (Post-Redirect-Get) per evitare reinvii accidentali.</li>
+<li>Aggiungere un pulsante <code>Azzera</code> (<code>type="reset"</code>) alla form e spiegare la differenza rispetto a un link che ripulisce via <code>GET</code>.</li>
+</ul>
+</body>
+</html>

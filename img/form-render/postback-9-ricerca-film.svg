@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="760" viewBox="0 0 1020 760" role="img" aria-labelledby="title desc">
+  <title id="title">Esercizio 9 - Ricerca Film con Filtri Avanzati (GET)</title>
+  <desc id="desc">Mockup con form GET multi-filtro, ordinamento, tabella risultati e link azzera filtri.</desc>
+  <rect width="1020" height="760" fill="#f4f7fc"/>
+
+  <!-- Card principale -->
+  <rect x="40" y="30" width="940" height="700" rx="12" fill="#ffffff" stroke="#cfd8e3"/>
+
+  <!-- Header -->
+  <text x="70" y="72" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">ricerca_film.php</text>
+  <text x="70" y="96" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Ricerca e filtri avanzati su catalogo film (GET) — URL condivisibile</text>
+  <rect x="794" y="55" width="48" height="22" rx="11" fill="#dcfce7"/>
+  <text x="805" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#166534">GET</text>
+  <rect x="850" y="55" width="88" height="22" rx="11" fill="#dbeafe"/>
+  <text x="865" y="70" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">POSTBACK</text>
+
+  <!-- URL bar -->
+  <rect x="70" y="108" width="880" height="26" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="86" y="125" font-family="Arial, sans-serif" font-size="11" fill="#475569">ricerca_film.php?q=coppola&amp;genere=Drammatico&amp;anno_da=1970&amp;anno_a=1980&amp;ordina=voto</text>
+
+  <!-- Form filtri (due righe) -->
+  <rect x="70" y="148" width="880" height="160" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="90" y="178" font-family="Arial, sans-serif" font-size="13" fill="#374151">Parola chiave (titolo / regista)</text>
+  <rect x="90" y="186" width="340" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="106" y="208" font-family="Arial, sans-serif" font-size="13" fill="#374151">coppola</text>
+
+  <text x="450" y="178" font-family="Arial, sans-serif" font-size="13" fill="#374151">Genere</text>
+  <rect x="450" y="186" width="200" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="466" y="208" font-family="Arial, sans-serif" font-size="13" fill="#374151">Drammatico  ▾</text>
+
+  <text x="670" y="178" font-family="Arial, sans-serif" font-size="13" fill="#374151">Ordina per</text>
+  <rect x="670" y="186" width="200" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="686" y="208" font-family="Arial, sans-serif" font-size="13" fill="#374151">Voto ↓  ▾</text>
+
+  <!-- Seconda riga filtri -->
+  <text x="90" y="244" font-family="Arial, sans-serif" font-size="13" fill="#374151">Anno da</text>
+  <rect x="90" y="252" width="150" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="106" y="274" font-family="Arial, sans-serif" font-size="13" fill="#374151">1970</text>
+
+  <text x="260" y="244" font-family="Arial, sans-serif" font-size="13" fill="#374151">Anno a</text>
+  <rect x="260" y="252" width="150" height="34" rx="6" fill="#fff" stroke="#9ca3af"/>
+  <text x="276" y="274" font-family="Arial, sans-serif" font-size="13" fill="#374151">1980</text>
+
+  <rect x="440" y="252" width="100" height="34" rx="8" fill="#2563eb"/>
+  <text x="469" y="274" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fff">Cerca</text>
+
+  <rect x="556" y="252" width="110" height="34" rx="8" fill="#e5e7eb" stroke="#9ca3af"/>
+  <text x="575" y="274" font-family="Arial, sans-serif" font-size="13" fill="#374151">Azzera filtri</text>
+  <text x="676" y="274" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">→ ricerca_film.php (senza parametri)</text>
+
+  <!-- Count -->
+  <text x="70" y="330" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#334155">Film trovati: 3</text>
+
+  <!-- Table header -->
+  <rect x="70" y="342" width="880" height="34" rx="6" fill="#e2e8f0"/>
+  <text x="90" y="364" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Titolo</text>
+  <text x="300" y="364" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Regista</text>
+  <text x="490" y="364" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Anno</text>
+  <text x="590" y="364" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Genere</text>
+  <text x="780" y="364" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#334155">Voto</text>
+
+  <!-- Table rows -->
+  <rect x="70" y="376" width="880" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="90" y="399" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Il Padrino</text>
+  <text x="300" y="399" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">F. F. Coppola</text>
+  <text x="490" y="399" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">1972</text>
+  <text x="590" y="399" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Drammatico</text>
+  <text x="780" y="399" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1e40af">9.2</text>
+
+  <rect x="70" y="412" width="880" height="36" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="90" y="435" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Apocalypse Now</text>
+  <text x="300" y="435" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">F. F. Coppola</text>
+  <text x="490" y="435" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">1979</text>
+  <text x="590" y="435" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Guerra</text>
+  <text x="780" y="435" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">8.4</text>
+
+  <rect x="70" y="448" width="880" height="36" fill="#fff" stroke="#e2e8f0"/>
+  <text x="90" y="471" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Il Padrino Parte II</text>
+  <text x="300" y="471" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">F. F. Coppola</text>
+  <text x="490" y="471" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">1974</text>
+  <text x="590" y="471" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Drammatico</text>
+  <text x="780" y="471" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">9.0</text>
+
+  <!-- Empty state note -->
+  <rect x="70" y="502" width="880" height="36" rx="6" fill="#fef9c3" stroke="#fde047"/>
+  <text x="90" y="525" font-family="Arial, sans-serif" font-size="13" fill="#713f12">Se nessun film corrisponde → "Nessun film trovato per i filtri selezionati"</text>
+
+  <!-- Mantieni stato note -->
+  <rect x="70" y="556" width="880" height="50" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="90" y="578" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#166534">Mantenimento stato form:</text>
+  <text x="90" y="596" font-family="Arial, sans-serif" font-size="12" fill="#166534">Ogni campo viene ripopolato con il valore ricevuto via $_GET (es. value="&lt;?= htmlspecialchars($_GET['q'] ?? '') ?&gt;")</text>
+
+  <text x="70" y="660" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Ricerca case-insensitive: stripos($film['titolo'], $q) !== false</text>
+  <text x="70" y="675" font-family="Arial, sans-serif" font-size="11" fill="#9ca3af">Ordinamento: usort() con funzione di confronto per campo selezionato</text>
+</svg>
