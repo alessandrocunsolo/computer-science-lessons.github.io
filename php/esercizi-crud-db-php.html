@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>esercizi-crud-db-php</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Esercizi: PHP e Database - CRUD con MariaDB</h1>
+<h2>Obiettivi della Scheda</h2>
+<ul>
+<li>Configurare la connessione PHP a MariaDB</li>
+<li>Eseguire query sicure con prepared statement</li>
+<li>Implementare operazioni <code>CREATE</code>, <code>READ</code>, <code>UPDATE</code>, <code>DELETE</code></li>
+<li>Gestire validazione server-side e messaggi di esito</li>
+<li>Organizzare pagine PHP in stile didattico (una responsabilita per file)</li>
+</ul>
+<hr />
+<h2>📌 Indicazioni generali</h2>
+<ul>
+<li>PHP 5.6+</li>
+<li>MariaDB 10+</li>
+<li>Estensione <code>mysqli</code> attiva</li>
+<li>Database creato con lo script: <code>sql/esercizi_crud_mariadb.sql</code></li>
+<li>Ogni esercizio puo essere svolto in un file PHP separato, seguendo la struttura suggerita.</li>
+<li>Usa sempre prepared statement nelle query SQL.</li>
+<li>Mostra messaggi chiari di successo o errore all'utente.</li>
+</ul>
+<hr />
+<h2>🗂️ Schema del database</h2>
+<p><img alt="Schema DB scuola_crud" src="../img/schema-db-scuola-crud.svg" /></p>
+<hr />
+<h2>🧱 Struttura consigliata dei file</h2>
+<div class="codehilite"><pre><span></span><code>php/
+  crud_db/
+    config/
+      connessione.php
+    studenti/
+      lista.php
+      aggiungi.php
+      modifica.php
+      elimina.php
+    corsi/
+      lista.php
+      aggiungi.php
+      modifica.php
+      elimina.php
+    iscrizioni/
+      lista.php
+      aggiungi.php
+      modifica.php
+      elimina.php
+</code></pre></div>
+
+<hr />
+<h2>🔌 Snippet base di connessione (riutilizzabile)</h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$host</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="nv">$database</span> <span class="o">=</span> <span class="s1">&#39;scuola_crud&#39;</span><span class="p">;</span>
+
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$host</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$database</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Connessione fallita: &#39;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">set_charset</span><span class="p">(</span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>🧪 Snippet base query SQL (mysqli)</h2>
+<h3>Query di lettura (SELECT)</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="nb">dirname</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../config/connessione.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, nome, cognome, email FROM studenti ORDER BY cognome, nome&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Errore nella query di lettura: &#39;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">())</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;cognome&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s1">&#39; - &#39;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">.</span> <span class="s1">&#39;&lt;br&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<h3>Query di inserimento/aggiornamento (INSERT/UPDATE)</h3>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="nb">dirname</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;/../config/connessione.php&#39;</span><span class="p">;</span>
+
+<span class="c1">// Esempio INSERT</span>
+<span class="nv">$sqlInsert</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO studenti (nome, cognome, email, classe) VALUES (?, ?, ?, ?)&quot;</span><span class="p">;</span>
+<span class="nv">$stmtInsert</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sqlInsert</span><span class="p">);</span>
+
+<span class="nv">$nome</span> <span class="o">=</span> <span class="s1">&#39;Mario&#39;</span><span class="p">;</span>
+<span class="nv">$cognome</span> <span class="o">=</span> <span class="s1">&#39;Rossi&#39;</span><span class="p">;</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;mario.rossi@studenti.it&#39;</span><span class="p">;</span>
+<span class="nv">$classe</span> <span class="o">=</span> <span class="s1">&#39;4A&#39;</span><span class="p">;</span>
+
+<span class="nv">$stmtInsert</span><span class="o">-&gt;</span><span class="na">bind_param</span><span class="p">(</span><span class="s1">&#39;ssss&#39;</span><span class="p">,</span> <span class="nv">$nome</span><span class="p">,</span> <span class="nv">$cognome</span><span class="p">,</span> <span class="nv">$email</span><span class="p">,</span> <span class="nv">$classe</span><span class="p">);</span>
+<span class="nv">$stmtInsert</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="c1">// Esempio UPDATE</span>
+<span class="nv">$sqlUpdate</span> <span class="o">=</span> <span class="s2">&quot;UPDATE studenti SET email = ?, classe = ? WHERE id = ?&quot;</span><span class="p">;</span>
+<span class="nv">$stmtUpdate</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sqlUpdate</span><span class="p">);</span>
+
+<span class="nv">$nuovaEmail</span> <span class="o">=</span> <span class="s1">&#39;mario.rossi2@studenti.it&#39;</span><span class="p">;</span>
+<span class="nv">$nuovaClasse</span> <span class="o">=</span> <span class="s1">&#39;4B&#39;</span><span class="p">;</span>
+<span class="nv">$idStudente</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nv">$stmtUpdate</span><span class="o">-&gt;</span><span class="na">bind_param</span><span class="p">(</span><span class="s1">&#39;ssi&#39;</span><span class="p">,</span> <span class="nv">$nuovaEmail</span><span class="p">,</span> <span class="nv">$nuovaClasse</span><span class="p">,</span> <span class="nv">$idStudente</span><span class="p">);</span>
+<span class="nv">$stmtUpdate</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$stmtUpdate</span><span class="o">-&gt;</span><span class="na">affected_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">&#39;Record aggiornato con successo&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">&#39;Nessuna riga aggiornata&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2>✅ Regole didattiche</h2>
+<ul>
+<li>Usa sempre <code>prepared statement</code> (<code>$stmt = $conn-&gt;prepare(...)</code>).</li>
+<li>Valida i dati in PHP prima della query.</li>
+<li>Mostra messaggi chiari: successo, errore, campi obbligatori mancanti.</li>
+<li>Per pagine di modifica/eliminazione, usa <code>id</code> passato via <code>GET</code>.</li>
+<li>Niente framework e niente ORM in questa scheda.</li>
+</ul>
+<hr />
+<h2>🎯 Esercizi CREATE (Inserimento)</h2>
+<h3><strong>Esercizio C1: Inserimento Studente</strong></h3>
+<p><strong>File:</strong> <code>crud_db/studenti/aggiungi.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form <code>POST</code> con campi: <code>nome</code>, <code>cognome</code>, <code>email</code>, <code>data_nascita</code>, <code>classe</code>.<br />
+2. Verifica che <code>nome</code>, <code>cognome</code>, <code>email</code> siano compilati.<br />
+3. Valida il formato email con <code>filter_var(..., FILTER_VALIDATE_EMAIL)</code>.<br />
+4. Esegui <code>INSERT</code> su tabella <code>studenti</code> con prepared statement.<br />
+5. Mostra messaggio <code>Studente aggiunto con successo</code>.</p>
+<p><strong>SQL obiettivo:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">studenti</span><span class="w"> </span><span class="p">(</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="n">cognome</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">data_nascita</span><span class="p">,</span><span class="w"> </span><span class="n">classe</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h3><strong>Esercizio C2: Inserimento Corso</strong></h3>
+<p><strong>File:</strong> <code>crud_db/corsi/aggiungi.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea form con campi: <code>titolo</code>, <code>codice</code>, <code>descrizione</code>, <code>ore_totali</code>, <code>docente_id</code>.<br />
+2. Verifica che <code>titolo</code>, <code>codice</code>, <code>ore_totali</code> siano obbligatori.<br />
+3. Controlla che <code>ore_totali</code> sia numero &gt; 0.<br />
+4. Inserisci in <code>corsi</code> con prepared statement.<br />
+5. Se <code>codice</code> esiste gia (UNIQUE), mostra un errore leggibile.</p>
+<p><strong>SQL obiettivo:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">corsi</span><span class="w"> </span><span class="p">(</span><span class="n">titolo</span><span class="p">,</span><span class="w"> </span><span class="n">codice</span><span class="p">,</span><span class="w"> </span><span class="n">descrizione</span><span class="p">,</span><span class="w"> </span><span class="n">ore_totali</span><span class="p">,</span><span class="w"> </span><span class="n">docente_id</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h3><strong>Esercizio C3: Inserimento Iscrizione</strong></h3>
+<p><strong>File:</strong> <code>crud_db/iscrizioni/aggiungi.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Crea una form con <code>studente_id</code>, <code>corso_id</code>, <code>stato</code>.<br />
+2. Le opzioni <code>studente_id</code> e <code>corso_id</code> devono essere <code>&lt;select&gt;</code> popolate dal DB.<br />
+3. Inserisci in tabella <code>iscrizioni</code> usando prepared statement.<br />
+4. Imposta <code>data_iscrizione</code> automaticamente (<code>CURDATE()</code>).<br />
+5. Gestisci il caso duplicato (<code>UNIQUE studente_id + corso_id</code>).</p>
+<p><strong>SQL obiettivo:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">iscrizioni</span><span class="w"> </span><span class="p">(</span><span class="n">studente_id</span><span class="p">,</span><span class="w"> </span><span class="n">corso_id</span><span class="p">,</span><span class="w"> </span><span class="n">data_iscrizione</span><span class="p">,</span><span class="w"> </span><span class="n">stato</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="o">?</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2>🎯 Esercizi READ (Lettura)</h2>
+<h3><strong>Esercizio R1: Lista Studenti con Ricerca</strong></h3>
+<p><strong>File:</strong> <code>crud_db/studenti/lista.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Mostra tutti gli studenti in una tabella HTML.<br />
+2. Aggiungi campo ricerca <code>q</code> (GET) su nome/cognome/email.<br />
+3. Se <code>q</code> e presente, filtra con <code>WHERE nome LIKE ? OR cognome LIKE ? OR email LIKE ?</code>.<br />
+4. Mostra il totale risultati trovati.<br />
+5. Ordina per <code>cognome ASC, nome ASC</code>.</p>
+<hr />
+<h3><strong>Esercizio R2: Lista Corsi con Nome Docente (JOIN)</strong></h3>
+<p><strong>File:</strong> <code>crud_db/corsi/lista.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Mostra elenco corsi con colonne: titolo, codice, ore_totali, docente.<br />
+2. Usa <code>LEFT JOIN</code> tra <code>corsi</code> e <code>docenti</code>.<br />
+3. Se non c'e docente associato, mostra <code>Non assegnato</code>.<br />
+4. Aggiungi filtro GET per <code>docente_id</code>.<br />
+5. Ordina per <code>titolo</code>.</p>
+<p><strong>SQL di riferimento:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">titolo</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">codice</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">ore_totali</span><span class="p">,</span>
+<span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">nome</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">cognome</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">docente</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">corsi</span><span class="w"> </span><span class="k">c</span>
+<span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">docenti</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">docente_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">titolo</span>
+</code></pre></div>
+
+<hr />
+<h3><strong>Esercizio R3: Dettaglio Iscrizioni Studente</strong></h3>
+<p><strong>File:</strong> <code>crud_db/iscrizioni/lista.php</code></p>
+<p><strong>Consegna:</strong><br />
+1. Ricevi <code>studente_id</code> via GET.<br />
+2. Mostra dati dello studente (nome, cognome, classe).<br />
+3. Sotto, mostra l'elenco dei corsi a cui e iscritto con stato e voto.<br />
+4. Usa JOIN tra <code>iscrizioni</code>, <code>studenti</code>, <code>corsi</code>.<br />
+5. Se non ha iscrizioni, mostra messaggio dedicato.</p>
+<hr />
+<h2>🎯 Esercizi UPDATE (Modifica)</h2>
+<h3><strong>Esercizio U1: Modifica Email e Classe Studente</strong></h3>
+<p><strong>File:</strong> <code>crud_db/studenti/modifica.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Carica il record studente con <code>id</code> da GET.<br />
+2. Precompila una form con dati attuali.<br />
+3. Permetti la modifica di <code>email</code> e <code>classe</code>.<br />
+4. Valida email e aggiorna con prepared statement.<br />
+5. Mostra <code>Modifica completata</code> e link alla lista.</p>
+<p><strong>SQL obiettivo:</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">studenti</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="n">classe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
+</code></pre></div>
+
+<hr />
+<h3><strong>Esercizio U2: Modifica Docente di un Corso</strong></h3>
+<p><strong>File:</strong> <code>crud_db/corsi/modifica.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Carica il corso selezionato tramite <code>id</code>.<br />
+2. Mostra select docenti popolata dal DB.<br />
+3. Aggiorna il campo <code>docente_id</code>.<br />
+4. Gestisci il caso <code>docente_id</code> nullo (nessuna assegnazione).<br />
+5. Mostra conferma e riepilogo corso aggiornato.</p>
+<hr />
+<h3><strong>Esercizio U3: Aggiorna Stato e Voto Iscrizione</strong></h3>
+<p><strong>File:</strong> <code>crud_db/iscrizioni/modifica.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Carica una iscrizione per <code>id</code>.<br />
+2. Form con <code>stato</code> (attiva, completata, ritirata) e <code>voto_finale</code>.<br />
+3. Se stato <code>completata</code>, <code>voto_finale</code> deve essere tra 18 e 30.<br />
+4. Se stato diverso da <code>completata</code>, salva <code>voto_finale = NULL</code>.<br />
+5. Aggiorna il record e mostra messaggio finale.</p>
+<hr />
+<h2>🎯 Esercizi DELETE (Eliminazione)</h2>
+<h3><strong>Esercizio D1: Elimina Studente con Conferma</strong></h3>
+<p><strong>File:</strong> <code>crud_db/studenti/elimina.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Mostra i dati principali dello studente da eliminare.<br />
+2. Chiedi conferma con form POST (<code>conferma=si</code>).<br />
+3. Esegui <code>DELETE</code> solo se confermato.<br />
+4. Se lo studente ha iscrizioni collegate, mostra errore leggibile.<br />
+5. Reindirizza a <code>lista.php</code> con messaggio in query string.</p>
+<hr />
+<h3><strong>Esercizio D2: Elimina Corso solo se senza Iscrizioni</strong></h3>
+<p><strong>File:</strong> <code>crud_db/corsi/elimina.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Prima della delete, conta le iscrizioni del corso.<br />
+2. Se count &gt; 0, blocca eliminazione e mostra messaggio.<br />
+3. Se count = 0, elimina il corso.<br />
+4. Registra l'esito in un messaggio HTML chiaro.<br />
+5. Inserisci link <code>Torna alla lista corsi</code>.</p>
+<hr />
+<h3><strong>Esercizio D3: Cancellazione Iscrizione</strong></h3>
+<p><strong>File:</strong> <code>crud_db/iscrizioni/elimina.php?id=...</code></p>
+<p><strong>Consegna:</strong><br />
+1. Carica iscrizione con nome studente e titolo corso (JOIN).<br />
+2. Mostra pagina di conferma.<br />
+3. Alla conferma POST, esegui <code>DELETE FROM iscrizioni WHERE id = ?</code>.<br />
+4. Torna alla lista iscrizioni mantenendo il filtro studente (se presente).<br />
+5. Mostra conferma <code>Iscrizione eliminata</code>.</p>
+<hr />
+<h2>💡 Estensione facoltativa (bonus)</h2>
+<h3><strong>Mini Progetto Completo CRUD</strong></h3>
+<p>Realizza il modulo completo <code>studenti/</code> con 4 pagine:<br />
+- <code>lista.php</code><br />
+- <code>aggiungi.php</code><br />
+- <code>modifica.php</code><br />
+- <code>elimina.php</code></p>
+<p>Vincoli:<br />
+- usa prepared statement in tutte le query;<br />
+- escape output in HTML con <code>htmlspecialchars()</code>;<br />
+- layout semplice ma leggibile (tabella + pulsanti azione).</p>
+<hr />
+<h2>✅ Criteri di Valutazione (rubrica sintetica)</h2>
+<ul>
+<li>Correttezza SQL (query giuste e sicure)</li>
+<li>Uso corretto di <code>GET</code> e <code>POST</code></li>
+<li>Validazione lato server</li>
+<li>Gestione errori DB leggibile per l'utente</li>
+<li>Chiarezza e organizzazione del codice</li>
+</ul>
+<hr />
+<h2>⚠️ Errori comuni da evitare</h2>
+<ul>
+<li>Query concatenate con input utente (SQL injection)</li>
+<li>Mancata validazione dell'<code>id</code> da GET</li>
+<li>Mancato controllo di <code>affected_rows</code> dopo UPDATE/DELETE</li>
+<li>Nessuna gestione del caso record non trovato</li>
+<li>Nessun controllo sui vincoli di integrita referenziale</li>
+</ul>
+</body>
+</html>
