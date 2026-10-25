@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>And_OR_NOT</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        h3 { font-size: 1.25em; }
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 85%;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        table th, table td {
+            border: 1px solid #dfe2e5;
+            padding: 8px 13px;
+        }
+        table th {
+            background-color: #f6f8fa;
+            font-weight: 600;
+        }
+        table tr:nth-child(even) {
+            background-color: #f6f8fa;
+        }
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding-left: 16px;
+            color: #6a737d;
+            margin: 0 0 16px 0;
+        }
+        ul, ol {
+            padding-left: 2em;
+        }
+        li {
+            margin: 0.25em 0;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            border: 0;
+            border-top: 2px solid #eaecef;
+            margin: 24px 0;
+        }
+        strong {
+            font-weight: 600;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Esercizi in C: AND, OR, NOT (Classe terza)</h1>
+<hr />
+<h2>Esercizio 1 – Operatore AND (<code>&amp;&amp;</code>): l'accesso alla palestra</h2>
+<p>Una palestra permette l'ingresso alla sala pesi solo a chi soddisfa <strong>tutte</strong> le seguenti condizioni. Scrivere un programma in C che legga da tastiera:</p>
+<ul>
+<li>l'età del cliente (intero);</li>
+<li>se l'abbonamento è in corso di validità (carattere <code>'S'</code> oppure <code>'N'</code>);</li>
+<li>l'ora di arrivo (intero da 0 a 23).</li>
+</ul>
+<p>Il cliente può accedere alla sala pesi se e solo se:</p>
+<ul>
+<li>ha almeno 16 anni, <strong>e</strong></li>
+<li>l'abbonamento è in corso di validità, <strong>e</strong></li>
+<li>l'ora di arrivo è compresa tra le 8 e le 21 (estremi inclusi).</li>
+</ul>
+<p>Il programma deve stampare <code>"Accesso consentito"</code> se tutte le condizioni sono soddisfatte, altrimenti <code>"Accesso negato"</code>.</p>
+<p><strong>Richiesta:</strong> utilizzare esclusivamente l'operatore <code>&amp;&amp;</code> per costruire un'unica condizione. Non sono ammessi <code>||</code> e <code>!</code>.</p>
+<hr />
+<h2>Esercizio 2 – Operatore OR (<code>||</code>): il bonus scolastico</h2>
+<p>Una scuola assegna un bonus (borsa di studio) a uno studente se <strong>almeno una</strong> delle seguenti condizioni è verificata. Scrivere un programma in C che legga da tastiera:</p>
+<ul>
+<li>la media dei voti (numero reale);</li>
+<li>il reddito annuo della famiglia in euro (intero);</li>
+<li>il numero di fratelli iscritti alla stessa scuola (intero).</li>
+</ul>
+<p>Lo studente ottiene il bonus se:</p>
+<ul>
+<li>la media dei voti è maggiore o uguale a 9, <strong>oppure</strong></li>
+<li>il reddito familiare è inferiore a 15000 euro, <strong>oppure</strong></li>
+<li>ha almeno 2 fratelli iscritti alla stessa scuola.</li>
+</ul>
+<p>Il programma deve stampare <code>"Bonus assegnato"</code> se almeno una condizione è verificata, altrimenti <code>"Bonus non assegnato"</code>.</p>
+<p><strong>Richiesta:</strong> utilizzare esclusivamente l'operatore <code>||</code> per costruire un'unica condizione. Non sono ammessi <code>&amp;&amp;</code> e <code>!</code>.</p>
+<hr />
+<h2>Esercizio 3 – Operatore NOT (<code>!</code>): il sistema di allarme</h2>
+<p>Un sistema di allarme domestico deve decidere se far suonare la sirena. Scrivere un programma in C che legga da tastiera tre valori interi, ciascuno uguale a <code>1</code> (vero) oppure <code>0</code> (falso):</p>
+<ul>
+<li><code>sensore</code>: vale 1 se il sensore di movimento rileva un intruso;</li>
+<li><code>disattivato</code>: vale 1 se il proprietario ha disattivato l'allarme con il codice;</li>
+<li><code>manutenzione</code>: vale 1 se il sistema è in modalità manutenzione.</li>
+</ul>
+<p>Il programma deve stampare:</p>
+<ul>
+<li><code>"Sirena attiva"</code> se il sensore rileva un intruso <strong>e</strong> l'allarme <strong>non</strong> è disattivato <strong>e</strong> il sistema <strong>non</strong> è in manutenzione;</li>
+<li><code>"Sirena spenta"</code> negli altri casi.</li>
+</ul>
+<p>Inoltre, il programma deve stampare <code>"Sistema operativo"</code> se il sistema <strong>non</strong> è in modalità manutenzione, oppure <code>"Sistema fuori servizio"</code> in caso contrario.</p>
+<p><strong>Richiesta:</strong> utilizzare l'operatore <code>!</code> per negare le variabili <code>disattivato</code> e <code>manutenzione</code> direttamente nelle condizioni (per il solo collegamento tra le condizioni è ammesso l'uso di <code>&amp;&amp;</code>; l'attenzione dell'esercizio è sull'operatore <code>!</code>).</p>
+<hr />
+<p><em>Nota: per tutti gli esercizi usare solo le strutture di selezione (<code>if</code>, <code>else if</code>, <code>else</code>) e nessun ciclo.</em></p>
+</body>
+</html>
