@@ -10,3 +10,8 @@
 - [Esercizi di base](php/lezione-php-base.html)
 - [Esercizi form HTML + backend PHP](php/esercizi-form-html-php.html)
 
+
+## Esercizi C
+- [Selezione AND OR NOT](c/selezione/And_OR_NOT.html)
+
+
